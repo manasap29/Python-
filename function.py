@@ -1,4 +1,3 @@
-c:\any\dir> spyder --reset
 #%reset -f
 #%%
 #Methods in python(append)
@@ -18,16 +17,8 @@ print(mylist)
 #091 Functions in Python(Includes general concepts and questions)
 #Return allows to assign the output to the new variable
 #Creation
-def name_func():
-    '''
-    DOCSTRING: Information about the function
-    '''
-    INPUT:no input
-    OUTPUT: Hello   
-    print(Hello)
-#
 def my_function():
-    print("Hello")
+    print("Hello") 
 #created a new function,how to call the function?
 my_function()
 #Here i gave 'Name' as an input,so during calling the func. i have to give name.
@@ -240,11 +231,220 @@ double = myfunc(2)
 triple = myfunc(3)
 val = 11
 print ("Double: " + str(double(val)) + "Triple: " + str(triple(val)))
-#%%
-
-
-
-
+#%% Test cases
+#Out of two even numbers show the smaller one but return the greater if one or both 
+#of them are odd.
+def lesser_even(a,b):
+    if a%2 == 0 and b%2 == 0:
+        return min(a,b)
+    else:
+        return max(a,b)
+lesser_even(2,4)
+lesser_even(6,7)
+#Write a Python function to find the Max of two,three numbers.
+def max_two(x,y):
+        if x > y:
+            result = x
+        else:
+            result = y
+        return result
+max_two(2,3)
+#defining max out of three numbers
+def max_three(x,y,z):
+    return max_two(x,max_two(y,z))
+max_three(2,6,-1)
+#Write a function to sum all the numbers in the list
+def sum(numbers):
+    total = 0
+    for x in numbers:
+        total += x
+    return total
+print(sum((1,3,8,42,-12)))
+#Write a function to multiply all the numbers in the list
+def multiply(numbers):
+    total = 1
+    for x in numbers:
+        total *= x
+    return total  
+print(multiply((12, 4, 2, 9, 6, -2)))        
+#write a function takes a two word string and returns true if both
+#word begins with the same letter.
+def check_string(text):
+    wordlist = text.split()
+    print(wordlist)
+    one = wordlist[0]
+    two = wordlist[1]
+    return one[0] == two[0]
+check_string("baby boy")
+check_string("baby girl")        
+#another smart way of doing it is 
+def check_string(text):
+    wordlist = text.lower().split()
+    print(wordlist)
+    return wordlist[0][0] == wordlist[0][1]       
+check_string("python console")        
+#Write a function that returns a reversed string.
+def reverse_string(str1):
+    return str1[::-1]
+reverse_string('collaboration')
+#Python function to calculate the factorial of a number (a non-negative integer).
+#The function accepts the number as an argument.    
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+n=int(input("Input a number to compute the factiorial : "))
+print(factorial(n))
+#Write a Python function to check whether a number is in a given range.
+def test_range(n):
+    if n in range(3,9):
+        print("%s is in the range" %str(n))
+    else:
+        print("The number is outside the range")
+test_range(11)   
+#
+def unique_list(l):
+  x = []
+  for a in l:
+    if a not in x:
+      x.append(a)
+  return x
+print(unique_list([1,2,2,2,3,3,3,3,4,4,4,5,5,5,5,5])) 
+#white a function that gives an input number is a prime number or not.
+number = int(input("Enter any number :"))
+if number > 1:
+    for i in range(2,number):
+        
+        if(number % i) == 0:
+            print()
+        print(number,"is not a prime number")
+        break
+    else:
+        print("It is not a prime number")
+#Write a Python function that checks whether a passed string is palindrome or not.
+#A palindrome is a word, phrase, or sequence that reads the same backward 
+#as forward, e.g., madam or nurses run.
+def ispalindrome(string):
+    left = 0
+    right = len(string) -1
+    while right >= left:
+        if not string[left] == string[right]:
+            return False
+        left += 1
+        right+= 1
+    return True
+print(ispalindrome('adam'))
+#Writing a function that focuses on first and fourth letter of 
+# a word and amkes it upper case.
+def old_macdonald(name):
+    first_half = name[:3]
+    second_half = name[3:]
+    return first_half.capitalize()+ second_half.capitalize()
+old_macdonald('macdonald')           
+#Reverse a string
+def master_yoda(text):
+    wordlist = text.split()
+    reverse_word_list = wordlist[::-1]
+    return reverse_word_list
+master_yoda('i am at home')  
+# Write a function that 'joins' the lists together.
+mylist = ['a','b','c']
+''.join(mylist)
+#almost there(absolute function) in python
+complex = (3 - 4j)
+print('Absolute value/Magnitude of complex is:', abs(complex))
+#
+float = -54.36
+print('Absolute value/Magnitude of float is: ',abs(float))
+#
+int = -94
+print('Absolute value/Magnitude of float is: ', abs(int))
+#The function checks where there is a same letter repeated after that,
+#if so returns True or return False.  
+def has_33(nums):
+    for i in range(0, len(nums)-1): 
+        if nums[i:i+2] == [3,3]:
+            return True  
+    return False
+has_33([2, 2, 3])
+has_33([2, 3, 3])
+#
+def numbers(a,b,c):
+    if sum((a,b,c)) <= 21:
+        return sum((a,b,c))
+    elif sum((a,b,c)) <= 31 and 11 in (a,b,c):
+        return sum((a,b,c)) - 10
+    else:
+        return 'BUST'
+numbers(5,9,17) 
+numbers(6,1,3)
+#%%       
+# Nested Statements    
+# LEGB RULE = Local -> Enclosed -> Global -> Built-in.
+# This is the order in which python used look for the variables in python.
+# Local namespace = def,lambda     
+# Enclosed= names in local scope of any and all enclosed funcion(def or lambda),
+# from inner to outer.
+# Global(Module) = name asiigned at top/declared global in a def   
+# Built-in(Python).= names preassigned in the built name(open,range)
+#Examples of LEGB function:
+# i is local.
+f = lambda i:i**2       
+#Enclosed function example
+name = 'This is a global name'
+def wish():
+# Enclosing function
+    name = 'Aryan'
+    def hello():
+        print('Hello '+ name)
+    hello()
+wish()
+#Global(Module)
+print(name) 
+# Built in function example
+len()       
+x = 50
+# Local variable example,a function outside the defined func.
+def func(x):
+    print('x is', x)
+    x = 2
+    print('Changed local x to', x)
+func(x)
+print('x is still', x)        
+# write a function measuring the volume of sphere:
+def vol(rad):
+    return(4/3)*(3.141)*(rad**3)
+vol(7)
+#Write a function that checks whether a number is in a given range
+#(inclusive of high and low)
+def num_check(num,low,high):
+    if num in range(low,high+1):
+        print('{} is in the range between {} and {}'.format(num,low,high))
+    else:
+        print('It is outside the range.')
+num_check(2,6,12)
+num_check(3,1,9)
+# Another method
+# we can also write a func using bollean to chek.Only Bollean as output
+def num_bool(num,low,high):
+    return num in range(low,high+1)
+num_bool(5,3,9)
+num_bool(11,11,15)
+    
+        
+        
+        
+        
+            
+        
+        
+        
+        
+        
+        
+        
+              
 
 
 
