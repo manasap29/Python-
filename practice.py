@@ -47,7 +47,7 @@ type(['list'])
 type(['Python'])
 type(['Oracle'])
 type(['Mongo'])
-
+#%%
 #We can perform a floor division by using two forward slashes (//) 
 #to divide and have the result as an integer.
 4 // 2
@@ -74,6 +74,7 @@ type(['Mongo'])
 27 ** (-1/3)
 8878 ** (-1/4)
 1000000 ** (-1/4)
+#%%
 #exponentiation (**) has higher precedence than * or / or unary -
 4 * - 3 ** 2
 3 * - 3 ** 4
@@ -209,25 +210,104 @@ a = [ 1, 2, 3, 4, 5, 6, 7, 8]
 print(a[2:7:2])
 a= ('The best way to do it')
 print(a[1:3:4])
-#python string formatting
-#the argument passed here is str.format(*args, **kwargs)
+#%%
+# we usetwo operators *(for tuple) and **(for dictionary)
+# python string formatting,Packing(*args) & Unpacking(*kwargs)
+# We use packing when we don't know how many arguments need to be passed to the python function.
+# The argument passed here is str.format(*args, **kwargs)
+
 '{} {}'.format('Python','Format')
+
 #the same is also for integers
 '{} {}'.format(50, 70)
+
 #it gives the number as '50 70'
 '{} {}'.format(10,20)
+
 #'10 20'
 '{} {}'.format('News','Nation')
+
 # 'News Nation'
 '{1} {0}'.format('News','Nation')
+
 #'Nation News'
 '{}{}'.format('Qlik', 'View')
+
 #'QlikView'
 '{1}{0}'.format('Qlik', 'View')
+
 #'ViewQlik'
 '{0}{0}'.format('Qlik', 'View')
 'QlikQlik'
 '{1}{1}'.format('Qlik', 'View')
+
+## We use packing when we don't know how many arguments need to be passed to the python function.
+#
+def my_func(*args):
+    print(args) 
+    
+my_func('ming', 'alice', 'tom', 'wilson', 'roy')
+#
+def my_func(**kwargs):
+    print(kwargs)
+    
+my_func(first='ming', second='alice', fourth='wilson', third='tom', fifth='roy')
+
+#Defining my function
+def mySum(*args):
+    sum = 0
+    
+    # defining the logic for the function
+    for i in range(0, len(args)):
+        sum = sum + args[i]
+    return sum
+
+mySum(1,45,7,2,55,23,45)
+mySum(2,5,55,60,54,11,28,45,66)  
+#
+# A Python program to demonstrate packing of dictionary items using **
+
+def fun(**kwargs):
+ 
+    # kwargs is a dict
+    print(type(kwargs))
+ 
+    # Printing dictionary items
+    for key in kwargs:
+        print("%s = %s" % (key, kwargs[key]))
+ 
+fun(name="wiki", ID="101", language="Python")
+  
+# A sample python function that takes three arguments and prints them
+def fun1(a, b, c):
+    print(a, b, c)
+ 
+# Another sample function.
+# It is PACKING and all arguments passed to fun2 are packed into tuple *args.
+
+def fun2(*args):
+ 
+    # Convert args tuple to a list so we can modify it
+    args = list(args)
+ 
+    # Modifying args
+    args[0] = 'Keep'
+    args[1] = 'Shoes'
+ 
+    # UNPACKING args and calling fun1()
+    fun1(*args)
+ 
+fun2('Beautiful', 'Morning', 'Out')
+
+# A sample program to demonstrate unpacking of dictionary items using **
+def fun(a, b, c):
+    print(a, b, c)
+ 
+# A call with unpacking of dictionary
+d = {'a':2, 'b':4, 'c':10}
+fun(**d)
+
+#%%
 #Padding and aligning strings
 #alligning to the Right(>30)
 '{:>30}'.format('Seychelles')
@@ -397,7 +477,7 @@ new_dict = dict()
 print(new_dict)
 new_dict = {}
 print(new_dict)
-    #Dictionary with key-vlaue
+#Dictionary with key-vlaue
 colour = {"key1":"red","key2":"green","key3":"blue","key4":"white","key5":"black"} 
 print(colour)
 #Get value by key in Python dictionary
@@ -591,6 +671,7 @@ print(tuple)
 tuple = ('H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D')
 tuple[5].append('Q')
 print(tuple)
+#%%
 #Iterators and iterable objects
 string = "1234567890"
 for char in string:
@@ -605,6 +686,7 @@ my_iterator = iter(my_list)
 for i in range(0,len(my_list)):
     next_item = next(my_iterator)
     print(next_item)
+#%%
 #043 Understanding and using Ranges
 print(range(100))
 my_list = list(range(10))
@@ -767,6 +849,7 @@ elif guess >5:
         print("Please choose a higher number")
 else:
     print("you got it right first time")
+#%%
 #FOR LOOP
 color_list = ["Red", "Blue", "Green", "Black"]
 for c in color_list:
@@ -829,8 +912,8 @@ print("The number is {}".format(newNumber))
 for country in ["India","China","Japan","Israel","Jordan","Cyprus","Cambodia","Brunei"]:
     #print("The asian country is " + country)
     #print("The asian country is {}".format(country))
-#
-#While loop
+#%%
+    #While loop
 x = 0;
 while x <5:
     print(x)
@@ -859,6 +942,7 @@ while (x < 10):
 else :
      print('The sum of first 9 integers : ',s)        
 print('The sum of ',x,' numbers is :',s) 
+#%%
 #032 Understanding Continue Break And Else
 shopping_list = ["Milk","Vegetable","Pasta","Egg","Bread"]
 for i in shopping_list:
@@ -904,6 +988,7 @@ for num in range(10,20):
 #         break
 #   else:
 #       print(num , 'is a prime number')
+#%%
 #033 Augmented Assignment
 number = "9,223,372,036,854,775,807"
 cleanedNumber = ''       
@@ -938,9 +1023,10 @@ print(x)
 greeting = "Good"
 greeting += "Morning"
 print(greeting)
+#%%
 #048 Binary Basics,049 What is binary
 #
-#
+#%%
 # Input and Output (IO) in Python
 file = open("C:\\Users\\Manas\\Desktop\\sample.txt",'r')
 for line in file:
@@ -965,17 +1051,218 @@ print(data)
 for line in data:
     lines = line.upper()
     print(lines)
+#%%
+# Decorators
+#There are two type o decorators,function and class decoratrs.
+def func(x):
+    return x+1
+func1 = func
+#func1(10)
+func(10)             
+# Writing a function inside a function
+def func1():
+    
+    def func2():
+        print("Hi, it's me 'func2'")
+        print("Thanks for calling me")
+    
+    print("This is the function 'func1'")
+    print("I am calling 'func2' now:")
+    func2()
   
+func1()
+#
+def temperature(t):
+    def celsius2fahrenheit(x):
+        return 9 * x / 5 + 32
 
-             
+    result = "It's " + str(celsius2fahrenheit(t)) + " fahreinheit!" 
+    return result
 
+print(temperature(30))
+#A function is returning another function
+ 
+def f(x):
+    def g(y):
+        return y + x + 3 
+    return g
+#
+def func1():
+    def get_message():
+        return "Hello there!"
 
+    return get_message
 
+func2 = func1()
+print(func2())
+# Inner function that has an access to the enclosed scope
+def func1(name):
+    def get_message():
+        return "Hello there "+name+"!"
 
+    return get_message
 
+func2 = func1("Aryan")
+print(func2())
+#%%
+#List Comprehension
+# This is a concept of converting a given list that converts it to an another list.
+# Mainly by using a for loop and append function one can create the list.
+list1 = [3,4,5,6,7,8]
+list2 = []
+for n in list1:
+    list2.append(n**2)
+print(list2)
+# or i can write
 
+num1 = [1, 2, 3, 4]
+squares = [n**2 for n in num1]
 
+print(squares)
+# Write to find the same numbers in 2 lists
+ alst = [1,2,3,4]
+ blst = [2,4,8,6]
+ cno = []
+ for a in alst:
+     for b in blst:
+         if a == b:
+             cno.append(a)
+print(cno)
+# another way i can also write
+alst = [1,2,3,4]
+blst = [2,4,8,6]
+cno = [a for a in alst for b in blst if a == b]
+print(cno)
+# Returning numbers that are unequal in lists
+alst = [1,3,5,8]
+blst = [1,5,6,8,9]
+ncn = []
+ncn = [(a,b) for a in alst for b in blst if a != b]
+print(ncn)
+#returning the square and the cube of the numbers of the list
+alst = [1,3,5,8]
+revised_alst = [[a**2,a**3] for a in alst]
+print(revised_alst)
+#%% Updating string
+# Here are the example of some basic arguments used.
+# %s - String (or any object with a string representation, like numbers)
 
+# %d - Integers
 
+# %f - Floating point numbers
 
+# %.<number of digits>f - Floating point numbers with a fixed amount of digits to the right of the dot.
 
+# %x/%X - Integers in hex representation (lowercase/uppercase)
+
+# Update/merging method is there for dictionaries but we don't have .append for dict.
+exist= {'A': 1,'B': 2,'C': 3}
+new = {'D': 4,'E': 5}
+
+exist.update(new)
+print(exist)
+
+#String Formatting with the  Operators
+Fname = 'Jayden'
+Lname = 'Aryan'
+Age = 2
+
+print("%s %s is %d years old." % (Fname, Lname, Age))
+#
+data = ("Jayden", "Aryan", 55.40)
+format_string = "Hello %s %s. Your current balance is $%s."
+
+print(format_string % data)
+# Any object which is not a string can be formatted using the %s operator.
+# 
+mylist = [1,2,3]
+print("A list: %s" % mylist)
+#%%
+# Enamurate in python
+# it yields the elements of an iterator, as well as an index number.
+
+for item in enumerate(["a", "b", "c"]):
+    print(item)
+#
+colours = ['Red','Blue','Green','Yellow','Brown','Purple','Black']    
+enumerate(colours)
+print(enumerate(colours))    
+#
+print(list(enumerate(colours)))    
+# Looping a numerate object
+colours = ['Red','Blue','Green','Yellow','Brown','Purple','Black']       
+for i in colours:
+    print(i)
+# Giving an index to the values
+print('\n')
+for count, i in enumerate(colours):
+    print(count, i)
+#changing index value
+print('\n')
+# changing default start value
+for count, i in enumerate(colours,100):
+    print(count, i)
+#%%
+# Zip and Unzip in function
+# This uses the concept of similar index of multiple containers.
+# Zip
+names = ['Arab','Aryan','Arpita','Aadarsh','Aaradhya']
+rollno = [ 4, 1, 3, 2, 5 ]
+marks = [ 80.05, 81.25, 80.88, 81.23, 80.06 ]
+# now we will use zip to map the velues
+output = zip(names, rollno, marks)
+# no we will make  aset of the output
+output = set(output)
+# now we will display the output
+# printing resultant values 
+print ("The zipped result is : ",end="")
+print (output)
+
+#
+## Python code to demonstrate the working of 
+# unzip
+ 
+# initializing lists
+ 
+names = ['Arab','Aryan','Arpita','Aadarsh','Aaradhya']
+rollno = [ 4, 1, 3, 2, 5 ]
+marks = [ 80.05, 81.25, 80.88, 81.23, 80.06 ]
+ 
+# using zip() to map values
+output = zip(names, rollno, marks)
+ 
+# converting values to print as list
+output = list(output)
+ 
+# printing resultant values 
+print ("The zipped result is : ",end="")
+print (output)
+ 
+print("\n")
+#Unzip
+# unzipping values
+namez, rollnoz, marksz = zip(*output)
+ 
+print ("The unzipped result: \n",end="")
+ 
+# printing initial lists
+print ("The name list is : ",end="")
+print (namez)
+ 
+print ("The rollno list is : ",end="")
+print (rollnoz)
+ 
+print ("The marks list is : ",end="")
+print (marksz)
+#
+# initializing list of players.
+players = [ "Gavaskar", "Sehwag", "Dhoni", "Dravid", "Rohit" ]
+ 
+# initializing their scores
+scores = [109, 87, 86, 69, 217 ]
+ 
+# printing players and scores.
+for pl, sc in zip(players, scores):
+    print ("Player :  %s     Score : %d" %(pl, sc))
+#%%
+# Shuffle
