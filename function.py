@@ -431,28 +431,235 @@ def num_bool(num,low,high):
     return num in range(low,high+1)
 num_bool(5,3,9)
 num_bool(11,11,15)
+#%%
+# OOP(Object Oriented Programming)
+
+# This allows users to cretae their own objects,methods and own attributes.    
+# This method uses the information by object returns the value or edit to the current object.
+# These are developed to make sure that the programmes are flexible and will be used by orgs. 
+# repeattely when working outside the library.
+# class(camelcasing) > Method(init,self,param > connect self.param > methods(def,method,self)
+# class & Creating attributes for object(class is a blueprint that define nature of an object)       
+# This is what we are gonna to define and code. 
+# Objects
+# Class keyword
+# Class attributes
+# Methods in a class
+# Inheritance
+# Polymorphism
+# Special Methods for classes
+#%%
+#class Dog():
+    #def _init_(self,breed,name,spots):
+        
+        #attributes
+        #we take in the argument
+        #assign using self.attribute_name
+        #self.breed = breed
+        #self.name = name
+        # expects a spot as a boolean(True/False)
+        #self.colour = colour
+        #pass       
+# This means you created a sample class and just hold on.        
+#Lets create an instance for the sample class   
+# the type is __main__.Sample  
+#Let's define a variable for my class
 #
+class Dog:
+        # class Attribute
+    species = 'mammal'
+    # Initializer / instance attributes
+    def __init__(self,breed,name,colour):
+        self.breed = breed
+        self.name = name
+        self.colour = colour
+doggy = Dog('Affenpinscher','Tommy','Black')
+doggy.name
+doggy.breed
+doggy.colour
+
+# instance method
     
-        
-        
-        
-        
-            
-        
-        
-        
-        
-        
-        
-        
-              
+class Circle:
+    pi = 3.14
+    # area = pi*r*r
+    def __init__(self, radius=5):
+        self.radius = radius 
+        self.area = radius * radius * Circle.pi
 
+    # reset radius
+    def setRadius(self, new_radius):
+        self.radius = new_radius
+        self.area = new_radius * new_radius * self.pi
 
+    # circumference
+    def getCircumference(self):
+        return self.radius * self.pi * 2
 
+c = Circle()
 
+print('Radius is: ',c.radius)
+print('Area is: ',c.area)
+print('Circumference is: ',c.getCircumference())
 
+# Inheritance method
+# My Base class is
 
+class Animal:
+    def __init__(self):
+        print("Animal created")
 
+    def whoAmI(self):
+        print("Animal")
 
+    def eat(self):
+        print("Eating")
+        
+# Now creating a new class 'Dog' from base class(Animal)
 
+class Dog(Animal):
+    def __init__(self):
+        Animal.__init__(self)
+        print("Dog created")
 
+    def whoAmI(self):
+        print("Dog")
+
+    def bark(self):
+        print("Woof!")
+
+d = Dog()
+d.eat()
+d.whoAmI()
+d.bark()
+
+# Polymorphism
+# Different object classes can share the same method name.
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return self.name+' says Woof!'
+    
+class Cat:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return self.name+' says Meow!' 
+    
+Doggy = Dog('Doggy')
+Kitty = Cat('Kitty')
+
+print(Doggy.speak())
+print(Kitty.speak())
+
+# we can also represent it by using  a loop 
+for pet in [Doggy,Kitty]:
+    print(pet.speak())
+    
+#another way of writing the way is
+def pet_speak(pet):
+    print(pet.speak())
+pet_speak(Doggy)
+pet_speak(Kitty)    
+
+#
+#Special function
+#This allows to use built in operation in python such as len,print etc.
+#                
+class Book:
+    def __init__(self, title, author, pages):
+        print("Book Created")
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def __str__(self):
+        return "Title: %s, author: %s, pages: %s" %(self.title, self.author, self.pages)
+
+    def __len__(self):
+        return self.pages
+
+    def __del__(self):
+        print("Book Deleted")
+    
+    
+book = Book("Advance Level Python", "Michal Jaworski", 536)
+
+#Special Methods
+print(book)
+print(len(book))
+del book  
+#%%  
+# Errors and exception handling    
+# for exception handling we generally use try(will result an except block),
+# except(if there is any error in try),finally(to be executed whether an error is there or not)
+# we can have the following example that uses try,except,finally
+# this is where user gives a special type of input to imply the error.
+# Ex-1
+try:
+    result = 10 + 20   
+except:
+    print("Not added correctly")
+else:
+    print("Added perfectly")
+    print(result)
+# there is no point of error at this point
+# now the error will appear when will be added to a string
+# result = 10 + '20' 
+    
+# Ex-2
+try:
+    f = open("sample.txt",'w')
+    f.write("write a test line")
+except:
+    print("All other excepption")
+finally:
+    print("Running perfectly")
+# if we  will change the file reading mode to 'r' instead of 'w' then error will be there.
+    
+def entint():
+    try:
+        val = int(input("enter an integer: "))
+    except:
+        print("you did not enter an integer!")
+        val = int(input("Try again-enter an integer: "))
+    finally:
+        print(" I executed!")
+    print(val)
+entint()        
+
+# Example 3
+    
+#def entint():
+#    while True:
+#        try:
+#            val = int(input("Please enter an integer: "))
+#        except:
+#            print("you did not enter an integer!")
+#            continue
+#        else:
+#            print("it's an integer!")
+#            break
+#        finally:
+#            print("I executed!")
+#        print(val)
+#entint()
+
+# Ex - 4
+def entint():
+    while True:
+        try:
+            val = int(input("Please enter an integer: "))
+        except:
+            print("Looks like you did not enter an integer!")
+            continue
+        else:
+            print("that's an integer!")
+            print(val)
+            break
+        finally:
+            print("I executed!")
+entint()
