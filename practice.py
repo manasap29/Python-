@@ -1265,4 +1265,86 @@ scores = [109, 87, 86, 69, 217 ]
 for pl, sc in zip(players, scores):
     print ("Player :  %s     Score : %d" %(pl, sc))
 #%%
-# Shuffle
+# POP & Split
+# This removes and returns the last object or obj from the list.
+# difference between 
+language = ['Python', 'Java', 'C++', 'French', 'C', 'R', 'Oracle']
+return_value = language.pop(3)
+print('Return value: ' , return_value)
+language.pop(3)
+print("Return value : ", language.pop(3))
+# Split ex-1
+language = 'Python, Java, C++, French, C, R, Oracle'
+language.split(",")
+# ex-2
+x = 'a,b,c'
+x.split(",")
+# ex - 3
+words = 'you can ind it by river side'
+words.split(" ")
+#%%
+# Shelve 
+# We can randomly access the keys in python using shelve.
+# It exactly works like open() 
+# Syntax for open the file using Python shelve
+# If flag is not mentioned By default, the underlying database file is opened for
+# reading and writing which is c If the optional writeback parameter is set to True.
+# Shelf.sync() Write back all entries in the cache if the shelf was opened with writeback set to True. 
+shelve.open(filename, flag='c' , writeback=True) 
+shelve.open()
+
+# Storing Python shelve data
+
+import shelve
+s = shelve.open("mydata.dat")
+s["Name"] = ["Aryan","Akanksha","Arab","Arpita"]
+s["Skill"] = ["Python","Java","R","Dotnet"]
+s["Age"] = [18,18,19,18]
+s.close() 
+
+# Retrieve Python shelve data
+
+import shelve 
+r = shelve.open("mydata.dat") 
+print (r["Name"]) 
+print (r["Skill"]) 
+print (r["Age"]) 
+r.close()
+
+# Even if we don't know the keys in the data we can use loop to retreive the data.
+
+import shelve 
+r = shelve.open("mydata.dat") 
+
+for key in r:
+   print (r[key])
+r.close()
+
+# Updating the Python shelve
+
+import shelve 
+
+s = shelve.open("mydata.dat",writeback=True) 
+key1 = input("Enter the key\n") 
+val1 = int(input("Enter the number of values ")) 
+
+for x in range(val1):
+   val = input("\n Enter the value\t") 
+   (s[key1]).append(val) 
+   
+print (s[key1]) 
+s.sync() 
+r.close()
+
+# Selective access of key    
+
+import shelve 
+
+r = shelve.open("mydata11.dat",writeback=True) 
+key1 = input("Enter the key\n") 
+
+print(r[key1]) 
+s.sync() 
+r.close()
+
+
