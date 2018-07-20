@@ -465,6 +465,7 @@ num_bool(11,11,15)
 # the type is __main__.Sample  
 #Let's define a variable for my class
 #
+#%%
 class Dog:
         # class Attribute
     species = 'mammal'
@@ -477,7 +478,7 @@ doggy = Dog('Affenpinscher','Tommy','Black')
 doggy.name
 doggy.breed
 doggy.colour
-
+#%%
 # instance method
     
 class Circle:
@@ -501,7 +502,7 @@ c = Circle()
 print('Radius is: ',c.radius)
 print('Area is: ',c.area)
 print('Circumference is: ',c.getCircumference())
-
+#%%
 # Inheritance method
 # My Base class is
 
@@ -532,7 +533,7 @@ d = Dog()
 d.eat()
 d.whoAmI()
 d.bark()
-
+#%%
 # Polymorphism
 # Different object classes can share the same method name.
 class Dog:
@@ -565,7 +566,7 @@ def pet_speak(pet):
 pet_speak(Doggy)
 pet_speak(Kitty)    
 
-#
+#%%
 #Special function
 #This allows to use built in operation in python such as len,print etc.
 #                
@@ -591,7 +592,81 @@ book = Book("Advance Level Python", "Michal Jaworski", 536)
 #Special Methods
 print(book)
 print(len(book))
-del book  
+del book 
+#%%
+# Case Studies 
+# find the distance and slope between two points coordinate1 =(3,2) & (8,10)
+
+class Line(object):
+    
+    def __init__(self,coor1,coor2):
+        self.coor1 = coor1
+        self.coor2 = coor2
+    
+    def distance(self):
+        x1,y1 = self.coor1
+        x2,y2 = self.coor2
+        return ((x2-x1)**2 + (y2-y1)**2)**0.5
+    
+    def slope(self):
+        x1,y1 = self.coor1
+        x2,y2 = self.coor2
+        return (y2-y1)/(x2-x1)
+coor1 = (3,2)
+coor2 = (8,10)
+line1= Line(coor1,coor2)
+
+line1.distance()
+line1.slope()
+
+#
+class Cylinder:
+    
+    def __init__(self,height=1,radius=1):
+        self.height = height
+        self.radius = radius
+        
+    def volume(self):
+        return 3.14*(self.radius)**2 * self.height
+    
+    def surface_area(self):
+        
+        return 2*3.141*self.radius*self.height + 2*3.14*(self.radius)**2
+        
+cyl = Cylinder(2,3)       
+cyl.volume()
+cyl.surface_area()
+
+# Instantiate your class, make several deposits and withdrawals, and test to make sure 
+# the account can't be overdrawn.
+#
+class Account:
+    def __init__(self,myaccount,balance=0):
+        self.myaccount = myaccount
+        self.balance = balance
+        
+    def __str__(self):
+        return f'Account owner:   {self.myaccount}\nAccount balance: Rs{self.balance}'
+        
+    def deposit(self,dep_amt):
+        self.balance = self.balance + dep_amt
+        print('Amount Deposited ')
+        
+    def withdraw(self,wd_amt):
+        if self.balance >= wd_amt:
+            self.balance = self.balance - wd_amt
+            print('Withdrawal Accepted')
+        else:
+            print('Funds Unavailable!')
+
+acctsbi  = Account('Aryan',100)
+print(acctsbi)
+acctsbi.myaccount
+acctsbi.balance
+acctsbi.withdraw(100)
+acctsbi.deposit(5000)
+acctsbi.withdraw(5500)
+#  
 #%%  
 # Errors and exception handling    
 # for exception handling we generally use try(will result an except block),
@@ -663,3 +738,290 @@ def entint():
         finally:
             print("I executed!")
 entint()
+
+#%%
+# Generators
+#it allows us to write afunction that can send back a value and then resume to 
+#pick up from where it is left off
+#it allows to generate value over sequence of time
+#here we use a yeild keyword statement
+#It automatically suspends and resumes their execution and state around the last point of value generation
+#It computes one value and waits until the next value called for.
+#
+def create_cubes(n):
+    result = []
+    for x in range(n):
+        result.append(x**3)
+    return result
+create_cubes(10)
+
+# this value keeps in memory,let's think about this which "yields" the numbers
+
+def create_cubes(n):
+    result = []
+    for x in range(n):
+        result.append(x**3)
+    return result
+
+for x in create_cubes(10):
+    print(x)
+# so instead of keeeping in memory we will use "yield".This is how Generators works.
+
+def create_cubes(n):
+    for x in range(n):
+        yield x**3
+
+for x in create_cubes(10):
+    print(x)
+# Example
+    
+def gen_fibon(n):
+    a = 1
+    b = 1
+    for i in range (n):
+        yield a
+        a,b = b,a+b
+        
+for number in gen_fibon(10):
+    print(number)
+    
+# Iter function
+    
+def simple_gen():
+    for x in range(3):
+        yield x 
+        
+for num in simple_gen():
+    print (num)
+    
+# see how yield actually works.Generator object does when called yield.when we are done with our range
+# it gives an error and asks for "stop iteration".This is not present in for loop(error)
+
+g = simple_gen()
+print(next(g))
+print(next(g))
+print(next(g))
+
+str = 'hello'
+
+#Iterate over string
+
+for s in str:
+    print(s)
+    
+# now if i will put next,it will through error.
+next(str)
+
+# string object supports iteration, but we can not directly iterate over it as we could 
+# with a generator function. 
+# if we want to use "iter" function to "str" into generator.
+
+s_iter = iter(str)
+next(s_iter)
+next(s_iter)
+next(s_iter)
+next(s_iter)
+
+# Create a generator for squares of numbers up to some number N.
+def numbersquare(n):
+    for i in range(n):
+        yield i**2
+        
+for i in numbersquare(20):
+    print(i)
+# generator that yields "n" random numbers between a low and high number using random library
+    
+import random
+random.randint(1,20)    
+#
+
+def rand_num(low,high,n):
+    for i in range (n):
+        yield random.randint(low,high)
+for i in range(1,20,15):
+    print(i)
+    
+# example to convert a string into an iterate function.
+    
+str = "Preferences"
+s_iter = iter(str)
+next(s_iter)    
+next(s_iter)   
+next(s_iter)   
+next(s_iter)   
+ 
+# example of Google generator comprehension
+
+list_1 = [1,2,3,4,5,6,7,8,9]
+gencomp = (i for i in list_1 if i>4)
+
+for i in gencomp:
+    print(i)
+
+# generator that produces infinite value
+    
+def infinite_generator(start=0):
+    while True:
+        yield start
+        start += 1
+
+for num in infinite_generator(4):
+    print(num, end=' ')
+    if num > 40:
+        break
+#%%
+# Collection Module
+# Collections module implements high-performance container datatypes 
+# (beyond the built-in types list, dict and tuple) and contains many useful data 
+# structures that you can use to store information in memory        
+# Few examples are....
+# defaultdict
+# OrderedDict
+# counter
+# deque
+# namedtuple
+# enum.Enum   
+
+#%%
+# Counter: dict subclass which helps count hashable objects.Counter allows us to 
+# count the occurrences of a particular item.
+    
+from collections import Counter
+
+colours = ['blue', 'red', 'blue', 'yellow', 'blue', 'red']
+col_count = Counter(colours)
+print(col_count)   
+    
+lst = [1,2,2,2,2,3,3,3,1,2,1,12,3,2,32,1,21,1,223,1]
+
+Counter(lst)    
+
+# With strings
+
+Counter('abahahdbdbcnzmhashsfdtdtdgdbdbvnbcxvxcsfdhdvx')    
+    
+# With sentence   
+
+str = "Experts say that the exercise of recalibration of the new ₹100 note couldtake over ₹100 crore and 12 months of time to completely recalibrate the ATMs in the country" 
+
+str1 = str.split()
+Counter(str1)  
+
+# Methods with Counter
+
+c = Counter(str1)
+c.most_common(3)
+  
+#%%
+# Defaultdict
+
+# Defaultdict will have a default value if that key has not been set yet.
+# It never raise a KeyError rather key that does not exist gets value returned by the default factory.    
+
+from collections import defaultdict
+
+d = {'k1':1}
+d['k1']
+
+# if we will call the key that does't exist,it will show an error
+d['k2']
+
+d  = defaultdict(object)
+d['one']
+# it will return the object value which is not defined.it takes default value.
+
+for item in d:
+    print(item)
+    
+# let's see the case with lambda func which takes the default zero if there is 
+# no assignment forr the key and see how that behaves.
+
+dict = defaultdict(lambda: 0)
+dict['one']
+
+# if we will put a value against the dict let's see..it will return 2 as the value.
+dict['two'] = 2
+dict
+
+#%%
+# "OrderedDict"
+
+# "OrderedDict" remembers the order in which contents were added.
+
+from collections import OrderedDict
+
+colours = OrderedDict([("Red", 198), ("Green", 170), ("Blue", 160)])
+for key, value in colours.items():
+    print(key, value)
+    
+# Equality check
+# Normal dictionary will result a True statement for the following.
+    
+dict1 = {}
+dict1['a'] = 'X'
+dict1['b'] = 'Y'
+
+dict2 = {}
+dict2['b'] = 'Y'
+dict2['a'] = 'X'
+
+print(dict1 == dict2)
+
+# Normal dictionary will result a False statement for the following.
+
+dict1 = OrderedDict ()
+dict1['a'] = 'X'
+dict1['b'] = 'Y'
+
+dict2 = OrderedDict ()
+dict2['b'] = 'Y'
+dict2['a'] = 'X'
+
+print(dict1 == dict2)
+#%%
+# "namedtuple"  
+
+# In "namedtuple" We first pass the object type name and then pass a string with 
+# different fields as a string with spaces in between the field names.
+# Then We can call on the attributes.
+#  A namedtuple assigns names, as well as the numerical index, to each member.
+
+# For Normal tuple you can not change a value in a tuple. In order to access 
+# the value in a tuple you use integer indexes
+
+man = ('Aryan', 30)
+print(man[0])
+
+# We can think of namedtuples like dictionaries but unlike dictionaries they are immutable.
+
+from collections import namedtuple
+
+Animal = namedtuple('Animal', 'name age type')
+Tommy = Animal(name="Tommy", age=31, type="Dog")
+print(Tommy[0])
+
+#
+from collections import namedtuple
+
+Dog = namedtuple('Dog','age breed name')
+sam = Dog(age=2,breed='Lab',name='Sammy')
+sam
+sam.age
+sam.breed
+sam[0]
+
+#%%
+# Datetime
+
+
+
+
+
+
+
+
+
+
+
+
+    
