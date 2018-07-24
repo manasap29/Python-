@@ -66,7 +66,7 @@ print(t != f)
 
 #%%
 
-# Strings: Python has great support for strings.
+# Strings: 
 
 hello = 'hello'    
 # String literals can use single quotes
@@ -119,7 +119,7 @@ print('  world '.strip())
 #%%
 # Containers
 
-# Python includes several built-in container types: lists, dictionaries, sets, and tuples.
+# We can find several built-in container types: lists, dictionaries, sets, and tuples.
 #%%
 # Lists
 
@@ -341,7 +341,7 @@ print(d[t])
 print(d[(1, 2)])  
 # Prints 1
 #%%
-# Functions : Python functions are defined using the def keyword
+# Functions : functions are defined using the def keyword
 
 def sign(x):
     if x > 0:
@@ -373,7 +373,7 @@ hello('Fred', loud=True)
 # Prints HELLO, FRED!
 #%%
 # Classes
-# The syntax for defining classes in Python is straightforward
+# The syntax for defining classes is straightforward
 
 class Greeter(object):
 
@@ -398,10 +398,10 @@ g.greet(loud=True)
 # Call an instance method; prints "HELLO, FRED!"
 
 #%%
-
 # Numpy
 
-# A numpy array is a grid of values, all of the same type, and is indexed by a 
+#%%
+# Numpy : A numpy array is a grid of values, all of the same type, indexed by a 
 # tuple of nonnegative integers.
 
 import numpy as np
@@ -452,7 +452,7 @@ print(b)
 # Prints [[ 1.  1.]]
 
 c = np.full((2,2), 7)  
-# Create a constant array
+# Create a constant array of 2rows & 2 columns
 print(c)               
 # Prints 
 #[[7 7]
@@ -472,11 +472,12 @@ print(e)
                  
 # [[0.34546416 0.94700657]
 # [0.81877976 0.32990396]]
+
 #%%
 # Array indexing
 
 #%%
-# Slicing: Similar to Python lists, numpy arrays can be sliced.
+# Slicing: Similar to lists, numpy arrays can be sliced.
 
 import numpy as np
 
@@ -1119,40 +1120,146 @@ print(a)
 # Three types of indexing methods are available − field access,
 # basic slicing and advanced indexing.
 
-# ex1
+#%%
 
-import numpy as np 
-a = np.arange(10) 
-s = slice(2,7,2) 
-print(a[s])
+# One dimensional slicing and indexing
 
-# Ex2 : slice single item 
+# Ex1 : slice single item (5) 
 
 import numpy as np 
 a = np.arange(10) 
 b = a[5] 
 print(b)
 
-#Ex3 : slice items starting from index 
-import numpy as np 
-a = np.arange(10) 
-print(a[2:])
+# ex2 : slice items between indexes,array between 2 and 5,5 not included.
 
-# ex4 : slice items between indexes 
 import numpy as np 
 a = np.arange(10) 
 print(a[2:5])
 
-# ex5 : import numpy as np 
+# ex3
+# We can select elements from index 0 to 7 with a step of 2.(stat,stop,step)
+import numpy as np 
+a = np.arange(10) 
+a[:7:2]
+
+# ex4
+# We can select elements from index 2 to 7 with a step of 2.(start(2),stop(7),step(2)) 
+
+import numpy as np
+a = np.arange(10) 
+s = slice(2,7,2) 
+print(a[s])
+
+# ex5
+# Negetive indexing 
+import numpy as np
+a = np.arange(10) 
+a[::-1]
+
+#%%
+
+# Multidimensional array slicing and indexing
+
+# ex1 : import numpy as np,returns a simple array.
+
+import numpy as np  
 a = np.array([[1,2,3],[3,4,5],[4,5,6]]) 
 print(a)  
 
-# slice items starting from index
+# Output : 
+#[[1 2 3]
+# [3 4 5]
+# [4 5 6]]
+
+# ex2 : we will create an array with the arange functon and reshape it.
+
+import numpy as np
+a = np.arange(24).reshape(2,3,4)
+a.shape
+# output : (2, 3, 4)
+
+print(a)
+
+# output : 
+
+# [[[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
+#
+# [[12 13 14 15]
+#  [16 17 18 19]
+#  [20 21 22 23]]]
+
+# The array has 24 elements(0-23),we reshaped it to be a 2-by-3-by-4, three-dimensional array.
+
+# We can visualize this as a two-story building with 12 rooms on each ﬂoor, 3 rows and 4 columns. 
+
+# for selecting a single cell for ex. first floor,first row and first column,we can reoresent it by
+
+print(a[0,0,0]) 
+# output : 0    
+
+# If we are not concerned about floor but want 1st row and 1st column ,we replace the first
+# index by a colon " :(colon) "
+
+print(a[:,0,0]) 
+# output : [ 0 12 ]
+
+print(a[0]) 
+
+# output : 
+#[[ 0  1  2  3]
+# [ 4  5  6  7]
+# [ 8  9 10 11]]
+
+# print(a[0])  == print( a[0, :, :] )== print(a[0, ...]) as an ellipsis replaces multi colons.
+
+# we can find the second floor by
+
+print(a[0,1]) 
+
+# output : [4 5 6 7]
+
+# Ex :  Using steps to slice : we can also select each second element of this selecton.
+
+print(a[0,1,::2]) 
+# output : [4 6]  
+
+# Ex : we can use ellipsis to slice  : select rooms on both floors on 2nd column.
+
+print(a[...,1])
+ 
+# output :
+#[[ 1  5  9]
+# [13 17 21]]
+
+# Both floor 4th column
+print(a[...,3])
+
+
+# Ex : select rooms on both floors on 2nd column.
+
+print(a[:,1]) 
+
+# output :
+#[[ 4  5  6  7]
+# [16 17 18 19]]
+
+print(a[0,:,1]) 
+
+
+# Second floor 3rd column
+print(a[1,:,2])
+
+
+# slice items starting from index,first row is sliced.
+a = np.array([[1,2,3],[3,4,5],[4,5,6]])
 print ('Let us slice the array from the index a[1:]')
 print(a[1:])
 
 
-# array to begin with
+# Normal array created.
 import numpy as  np
 a = np.array([[1,2,3],[3,4,5],[4,5,6]]) 
 
@@ -1167,12 +1274,363 @@ print('\n')
 
 # we can slice all items from the second row this way
 print('The items in the second row are:')
-print (a[1,...] )
+print (a[1,...])
 print('\n')  
 
 # Now we will slice all items from column 1 onwards 
 print('The items column 1 onwards are:')
 print( a[...,1:])
+
+#%%
+
+# Array in  onedimensional & multidimensional : 
+# In a multi-dimensional array, items can be accessed using a comma-separated tuple of indices.
+
+#%%
+
+# onedimensional
+
+import numpy as np
+
+x = np.arange(10)
+x
+# output : array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+
+# first five elements
+x[:5]  
+# output :array([0, 1, 2, 3, 4])
+
+
+# elements after index 5
+x[5:]  
+# output : array([5, 6, 7, 8, 9])
+
+# middle sub-array
+x[4:7]  
+# output :array([4, 5, 6])
+
+
+# middle sub-array
+x[4:7]  
+# output : array([4, 5, 6])
+
+
+# every other element, starting at index 1
+x[1::2]  
+# output : array([1, 3, 5, 7, 9])
+
+
+# all elements, reversed
+x[::-1]  
+# output : array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
+
+
+# reversed every other from index 5
+x[5::-2] 
+# output: array([5, 3, 1])
+
+#%%
+# Multidimensional Array and subarray.
+
+import numpy as np  
+a = np.array([[12, 5, 2, 4],[7, 6, 8, 8],[1, 6, 7, 7]]) 
+print(a) 
+#%%
+# Ex1
+
+print(a[0, 0])
+# output : 3
+
+print(a[0, 0])
+# output : 3
+
+#%%
+# Ex2 : two rows, three columns
+
+a[:2, :3]  
+ 
+# output : array([[12,  5,  2],
+#               [ 7,  6,  8]])
+
+
+a[:3, ::2]  # all rows, every other column
+# output :array([[12,  2],
+#               [ 7,  8],
+#               [ 1,  7]])
+
+#%%
+# Ex3 : Finally, subarray dimensions can even be reversed together:
+
+x2[::-1, ::-1]
+
+# output : array([[ 7,  7,  6,  1],
+#               [ 8,  8,  6,  7],
+#               [ 4,  2,  5, 12]])
+
+
+# Accessing array rows and columns
+# This can be done by combining indexing and slicing, using an empty slice marked 
+# by a single colon (:):
+
+#%%
+
+# Ex4
+
+# first column of a
+print(a[:, 0])
+  
+# output : [12  7  1]
+
+#%%
+
+# Ex5
+
+# first row of a
+print(a[0, :]) 
+# output : [12  5  2  4]
+
+# In the case of row access, the empty slice can be omitted for a more compact syntax:
+
+# equivalent to a[0, :]
+print(a[0])  
+# output : [12  5  2  4]
+
+
+# Subarrays as no-copy views
+
+#%%
+# Ex6
+
+a_sub = a[:2, :2]
+print(a_sub)
+# output :[[12  5]
+#        [ 7  6]]
+
+#%%
+
+# Ex7
+
+# Now if we modify this subarray, we'll see that the original array is changed! Observe
+
+a_sub[0,0] = 99
+print(a_sub)
+
+# output :    [[99  5]
+#            [ 7  6]]
+
+
+# Creating copies of arrays : This is done by copy() method.
+
+import numpy as np  
+a = np.array([[12, 5, 2, 4],[7, 6, 8, 8],[1, 6, 7, 7]]) 
+print(a) 
+#%%
+
+# Ex8
+
+a_sub_copy = a[:2,:2].copy()
+print(a_sub_copy)
+
+# output : [[12  5]
+#           [ 7  6]]
+
+
+# If we modify the sub array the main array remain untouched.
+
+#%%
+# Ex9
+
+a_sub_copy[0, 0] = 42
+print(a_sub_copy)
+
+# output : [[12  5]
+#            [ 7  6]]
+print(a)
+
+
+# Reshaping arrays : Thisis done using  " reshape " method.
+
+#%%
+# Ex10
+
+grid = np.arange(1,10).reshape((3,3))
+print(grid)
+# output : [[1 2 3]
+#           [4 5 6]
+#           [7 8 9]]
+
+# Reshaping of Arrays : The common method of reshaping  is by conversion of an one 
+# dimensional array into a two dimensional row and column matrix.This can be done by using 
+# a "rehape". Another method is by using a "newaxis" keyword within the slicing condition.
+
+#%%
+
+# Ex11
+
+x = np.array([1,2,3])
+# row vector via reshape
+x.reshape(1,3)
+# output : array([[1, 2, 3]])
+
+# row vector via newaxis,the same result as above.
+x[np.newaxis, :]
+# output : array([[1, 2, 3]])
+
+#%%
+# Ex12
+
+# column vector by reshape method.
+x.reshape(3,1)
+# output :array([[1],
+#               [2],
+#                [3]])
+#%%
+
+# Ex13
+
+# column vector via newaxis
+x[:,np.newaxis]
+# output :array([[1],
+#               [2],
+#              [3]])
+
+
+# Array concartination and splitting.
+
+#%%
+
+# Ex14
+x = np.array([1,2,3])
+y = np.array([3,2,1])
+np.concatenate([x, y])
+
+#%%
+# Ex15
+
+# We can also concatenate more than two arrays at once.
+ z = np.array([99,99,99])
+ np.concatenate([x, y, z])
+# output : array([ 1,  2,  3,  3,  2,  1, 99, 99, 99])
+
+# It can also be used for two-dimensional arrays
+
+grid = np.array([[1, 2, 3],[4, 5, 6]])
+print(grid)
+
+#%%
+# Ex16
+
+# concatenate along the first axis
+np.concatenate([grid, grid])
+
+# output:array([[1, 2, 3],
+#              [4, 5, 6],
+#              [1, 2, 3],
+#              [4, 5, 6]])
+
+#%%
+# Ex17
+
+# concatenate along the same axis
+
+np.concatenate([grid, grid], axis =1)
+# output: array([[1, 2, 3, 1, 2, 3],
+#               [4, 5, 6, 4, 5, 6]])
+
+#%%
+# Ex18
+
+# For working with mixed dimensional arrays,it can be clearer to use np.vstack(vertical stack) and
+# np.hstack for horizontal stack functions.
+
+x = np.array([1,2,3])
+grid = np.array([[9,8,7],[6,5,4]])
+# vertically stack the arrays
+np.vstack([x, grid])
+
+# output: array([[1, 2, 3],
+#               [9, 8, 7],
+#                [6, 5, 4]])
+
+#%%
+# Ex19
+
+# horizontally stack the arrays
+
+y = np.array([[99],[99]])
+np.hstack([grid, y])
+# output :  array([[ 9,  8,  7, 99],
+#                   [ 6,  5,  4, 99]])
+
+# np.dstack will start array along the third axis.
+
+#%%
+# Ex20:
+
+a = np.array((1,2,3))
+b = np.array((2,3,4))
+np.dstack((a,b))
+# output : array([[[1, 2],
+#                   [2, 3],
+#                   [3, 4]]])
+
+#%%
+# Splitting of arrays
+
+# The opposite of concatenation is splitting, which is implemented by the 
+# functions np.split, np.hsplit, and np.vsplit. For each of these, we can pass a 
+# list of indices giving the split points
+
+# Ex21
+
+x = [1, 2, 3, 99, 99, 3, 2, 1]
+x1, x2, x3 = np.split(x, [3, 5])
+print(x1, x2, x3)
+# output :
+
+# N split-points, leads to N + 1 subarrays. The related functions np.hsplit and 
+# np.vsplit are similar
+#%%
+
+# Ex22
+
+grid = np.arange(16).reshape((4, 4))
+grid
+# output : array([[ 0,  1,  2,  3],
+#                 [ 4,  5,  6,  7],
+#                  [ 8,  9, 10, 11],
+#                  [12, 13, 14, 15]])
+
+#%%
+# Ex23
+
+upper, lower = np.vsplit(grid, [2])
+print(upper)
+print(lower)
+
+# output :  [[0 1 2 3]
+#           [4 5 6 7]]
+#           [[ 8  9 10 11]
+#            [12 13 14 15]]
+
+#%%
+# Ex24
+
+left, right = np.hsplit(grid, [2])
+print(left)
+print(right)
+# output : [[ 0  1]
+#           [ 4  5]
+#            [ 8  9]
+#           [12 13]]
+#           [[ 2  3]
+#           [ 6  7]
+#            [10 11]
+#            [14 15]]
+
+# Similarly, np.dsplit will split arrays along the third axis.
+
 
 #%%
 # Advanced indexing
@@ -1188,7 +1646,7 @@ y = x[[0,1,2], [0,1,0]]
 print(y)
 
 # The selection includes elements at (0,0), (1,1) and (2,0) from the first array.
-# here the indexing is happening like this.each element in the ndarray is assigned with an index.
+# Here the indexing is happening like this.each element in the ndarray is assigned with an index.
 # 1(0,0),2(0,1)
 # 3(1,0),4(1,1)
 # 5(2,0),6(2,1)
@@ -1275,23 +1733,459 @@ import numpy as np
 a = np.array([np.nan, 1,2,np.nan,3,4,5]) 
 print(a[~np.isnan(a)])
 
+# output: [1. 2. 3. 4. 5.]
+
+#%%
+# How to filter out the non-complex elements from an array.
+
+import numpy as np 
+a = np.array([1, 2+6j, 5, 3.5+5j]) 
+print(a[np.iscomplex(a)])
+
+# output: [2. +6.j 3.5+5.j]
+
+#%%
+# Broadcasting : numpy.broadcast
+
+# Broadcasting provides a means of vectorizing array operations so that looping occurs in C 
+# instead of Python
+
+# When operating on two arrays, NumPy compares their shapes element-wise. It starts with the
+# trailing dimensions, and works its way forward. Two dimensions are compatible when
+# they are equal, or
+# one of them is 1.
+
+import numpy as np 
+a = np.array([[0.0,0.0,0.0],[10.0,10.0,10.0],[20.0,20.0,20.0],[30.0,30.0,30.0]]) 
+b = np.array([1.0,2.0,3.0]) 
+print(a + b)
+
+# output : 
+#    [[ 1.  2.  3.]
+#     [11. 12. 13.]
+#     [21. 22. 23.]
+#     [31. 32. 33.]]
 
 
+#%%
+# Iterating Over Array :  nditer
+
+# numpy  has " numpy.nditer " a multidimensional iterator object using which we cam iterate over 
+# an array.n
+
+#%%
+
+# Ex:
+
+import numpy as np
+a = np.arange(0,60,5)
+a = a.reshape(3,4)
+print(a)
+
+# output :[[ 0 5 10 15]
+#       [20 25 30 35]
+#       [40 45 50 55]]
+
+# Now  let's use the iterator and see the reult
+
+for x in np.nditer(a):
+   print(x)
+
+# output : 
+#   0
+#   5
+#   10
+#   15
+#   20
+#   25
+#   30
+#   35
+#   40
+#   45
+#   50
+#   55
+
+#%%
+   
+# Ex:
+
+# Let's check the impact on an array and its transpose,impact of "nditer"   on it.
+
+# An array
+   
+import numpy as np 
+a = np.arange(0,60,5) 
+a = a.reshape(3,4) 
+print(a)
 
 
+# output : [[ 0  5 10 15]
+#           [20 25 30 35]
+#           [40 45 50 55]]
+
+# Transpose of the array :
+
+b = a.T 
+print(b)
+
+# output : [[ 0 20 40]
+#           [ 5 25 45]
+#           [10 30 50]
+#           [15 35 55]]
+
+# apply "nditer" on 'b'
+
+for x in np.nditer(b): 
+   print(x)
+   
+# output :
+#   0
+#   5
+#   10
+#   15
+#   20
+#   25
+#   30
+#   35
+#   40
+#   45
+#   50
+#   55
+
+#%%
+# Iteration Order : C-style order & F-style order
+
+# C-style order
+   
+# The iterated array can be Sorted in C-style order & F-style order which is 
+# more efficient way of iterating over an array.
+   
+c = b.copy(order = 'C')   
+print(c)
+
+# output : 
+#   [[ 0 20 40]
+#   [ 5 25 45]
+#   [10 30 50]
+#   [15 35 55]]
+
+for x in np.nditer(c):
+   print(x)
+   
+# output : 
+#   0
+#   20
+#   40
+#   5
+#   25
+#   45
+#   10
+#   30
+#   50
+#   15
+#   35
+#   55   
+   
+#%%
+#  F-style order
+   
+c = b.copy(order = 'F')
+print(c)
+
+# output : 
+#   [[ 0 20 40]
+#    [ 5 25 45]
+#    [10 30 50]
+#   [15 35 55]]
+
+for x in np.nditer(c):
+   print(x)
+
+# output :    
+#   0
+#   5
+#   10
+#   15
+#   20
+#   25
+#   30
+#   35
+#   40
+#   45
+#   50
+#   55
+   
+#%%
+
+# Let's check an nditer object and use order by:
+   
+a = np.arange(0,60,5) 
+a = a.reshape(3,4)   
+print(a) 
+
+# output : 
+#       [[ 0  5 10 15]
+#       [20 25 30 35]
+#       [40 45 50 55]]
+
+# C-style order
+
+for x in np.nditer(a, order = 'C'): 
+   print(x)
+
+# output :
+#   0
+#   5
+#   10
+#   15
+#   20
+#   25
+#   30
+#   35
+#   40
+#   45
+#   50
+#   55   
+   
+# F-style order
+
+for x in np.nditer(a, order = 'F'): 
+   print(x)
+
+# output :
+   
+#   0
+#   20
+#   40
+#   5
+#   25
+#   45
+#   10
+#   30
+#   50
+#   15
+#   35
+#   55
+
+#%%
+# Modifying Array Values:
+   
+#%%   
+
+# op_flags in nditer which enable modifying array elements  into read-only,
+# read-write or write-only mode  .
+   
+a = np.arange(0,60,5) 
+a = a.reshape(3,4)   
+print(a) 
+
+# output : 
+#       [[ 0  5 10 15]
+#       [20 25 30 35]
+#       [40 45 50 55]]
+
+# now wewill use op_flag on it(multiplied by 2)
+
+for x in np.nditer(a, op_flags = ['readwrite']):
+   x[...] = 2*x
+   
+print(a)
+
+# output :  [[  0  20  40  60]
+#           [ 80 100 120 140]
+#           [160 180 200 220]]
+
+#%%
+# External Loop
+
+#%%
+#  "nditer" has  ‘flags’ parameter where each column is traversed(sideways) by the iterator.
+
+a = np.arange(0,60,5) 
+a = a.reshape(3,4)   
+print(a) 
+
+# output : 
+#       [[ 0  5 10 15]
+#       [20 25 30 35]
+#       [40 45 50 55]]
+
+# Now apply "flags"
+
+for x in np.nditer(a, flags = ['external_loop'], order = 'F'):
+   print(x)
+
+# output : 
+#   [  0  80 160]
+#   [ 20 100 180]
+#   [ 40 120 200]
+#   [ 60 140 220]
+
+#%%
+# Broadcasting Iteration
+
+#%%
+
+# an array a has dimension 3X4, and there is another array b of dimension 1X4,
+# the iterator of following type is used (array b is broadcast to size of a).
+   
+a = np.arange(0,60,5) 
+a = a.reshape(3,4)   
+print(a) 
+
+# output : 
+#       [[ 0  5 10 15]
+#       [20 25 30 35]
+#       [40 45 50 55]]
+
+# Second Array
+
+b = np.array([1, 2, 3, 4], dtype = int) 
+print(b) 
+
+# output : [1 2 3 4]
+
+# Modified
+
+for x,y in np.nditer([a,b]): 
+   print("%d:%d" % (x,y))
+
+# output :
+#   0:1
+#   20:2
+#   40:3
+#   60:4
+#   80:1
+#   100:2
+#   120:3
+#   140:4
+#   160:1
+#   180:2
+#   200:3
+#   220:4
+
+#%%
+# Array Manipulation : Routines availabe for array manupulation are 
+
+#%%
+
+# For Changing Shape :
+   
+# reshape : a.reshape()
+   
+# a.reshape(), then apply a.flat[]
+   
+# a = np.arange().reshape() > a.flatten() > a.flatten(order = 'F')(Ordering)
+   
+# a = np.arange().reshape() > a.ravel() > a.ravel(order = 'F')(Ordering)
+   
+#%%
+   
+# For Transpose Operations :
+   
+# a = np.arange().reshape() > np.transpose(a)
+   
+# a = np.arange().reshape() > a.T
+       
+# rollaxis :
+
+# a 3d ndarray 
+   
+import numpy as np 
+a = np.arange(8).reshape(2,2,2) 
+print( a )
+print ('\n')
+# to roll axis-2 to axis-0 (along width to along depth) 
+
+# now we will use rollaxis function
+print (np.rollaxis(a,2))  
+# to roll axis 0 to 1 (along width to height) 
+print('\n' )
+
+print('After applying rollaxis function:' )
+print (np.rollaxis(a,2,1))
+
+# output:
+#   [[[0 2]
+#     [1 3]]
+#
+#   [[4 6]
+#    [5 7]]]
 
 
+# swapaxes
 
+import numpy as np 
+a = np.arange(8).reshape(2,2,2) 
+print( a )
+print ('\n')  
+# now swap numbers between axis 0 (along depth) and axis 2 (along width) 
 
+print 'after applying the swapaxes function:' 
+print np.swapaxes(a, 2, 0)
 
+#%%
 
+# Changing Dimensions :
 
+# broadcast
+# Produces an object that mimics broadcasting
 
+# broadcast_to
+# Broadcasts an array to a new shape
 
+# expand_dims
+# Expands the shape of an array
 
+# squeeze
+# Removes single-dimensional entries from the shape of an array
 
+#%%
 
+# Joining Arrays
 
+# concatenate
+# Joins a sequence of arrays along an existing axis
 
+# stack
+# Joins a sequence of arrays along a new axis
 
+# hstack
+# Stacks arrays in sequence horizontally (column wise)
 
+# vstack
+# Stacks arrays in sequence vertically (row wise)
+
+#%%
+
+# Splitting Arrays
+
+# split
+# Splits an array into multiple sub-arrays
+#
+# hsplit
+# Splits an array into multiple sub-arrays horizontally (column-wise)
+#
+# vsplit
+# Splits an array into multiple sub-arrays vertically (row-wise)
+
+#%%
+
+# Adding / Removing Elements
+
+# resize
+# Returns a new array with the specified shape
+
+# append
+# Appends values to the end of an array
+
+# insert
+# Inserts the values along the given axis before the given indices
+
+# delete
+# Returns a new array with sub-arrays along an axis deleted
+
+# unique
+# Finds the unique elements of an array
+
+#%%
