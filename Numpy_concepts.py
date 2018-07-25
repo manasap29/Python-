@@ -1715,8 +1715,6 @@ print(y)
 
 import numpy as np 
 x = np.array([[ 0,  1,  2],[ 3,  4,  5],[ 6,  7,  8],[ 9, 10, 11]]) 
-
-print('Our array is:') 
 print(x) 
 print('\n')  
 
@@ -2189,3 +2187,533 @@ print np.swapaxes(a, 2, 0)
 # Finds the unique elements of an array
 
 #%%
+
+# Binary Operators:  np.bitwise_and()
+
+import numpy as np
+a,b = 13,17
+print(bin(a),bin(b))
+np.bitwise_and(13,17)
+
+# output : 1
+
+#%%
+# String Functions
+#%%
+# Concatenation 
+
+# two strings:
+
+import numpy as np
+print(np.char.add(['abc'],['xyz']))
+print(np.char.add(['a,b,c'],['x,y,z']))
+
+print(np.char.add(['Good','Morning'], ['xyz' , 'abc']))
+
+# output : ['Goodxyz' 'Morningabc']
+
+#%%
+# Multiply : np.char.multiply
+
+import numpya s np
+print(np.char.multiply('hello',3))
+
+# output : hellohellohello
+
+#%%
+# center : numpy.char.center()
+
+import numpy as np
+print(np.char.center( 'Morning', 30, fillchar = '+'))
+
+# output : +++++++++++Morning++++++++++++ (30char including string)
+
+#%%
+# capitalize : numpy.char.capitalize()
+
+import numpy as np
+print(np.char.capitalize('good morning'))
+
+# output : Good morning
+
+#%%
+# title : numpy.char.title()
+import numpy as np
+print(np.char.title('good morning Aryan'))
+
+# output : Good Morning Aryan
+
+#%%
+# lower : numpy.char.lower()
+import numpy as np
+print(np.char.lower('GOOD MORNING ARYAN'))
+
+# output : good morning aryan
+
+#%%
+# upper : numpy.char.upper()
+import numpy as np
+print(np.char.upper('good morning aryan'))
+
+# output : GOOD MORNING ARYAN
+
+#%%
+# split :  numpy.char.split()
+
+import numpy as np
+print(np.char.split('good morning aryan'))
+
+# output : 
+['good', 'morning', 'aryan']
+
+#%%
+# join : numpy.char.join()
+
+import numpy as np
+print(np.char.join(':','dmy')) 
+print(np.char.join([':','-'],['dmy','ymd']))
+
+# output : d:m:y , ['d:m:y' 'y-m-d']
+
+#%%
+# replace : numpy.char.replace()
+
+import numpy as np 
+print(np.char.replace ('Good morning arab', 'arab', 'Aryan'))
+
+# output : Good morning Aryan
+
+#%%
+
+# Mathematical Functions
+
+# NumPy provides standard trigonometric functions, functions for arithmetic operations, 
+# handling complex numbers, etc.
+
+#%%
+
+# Trigonometric Functions:
+
+# We will now take an array,convert it to radians(multiply with pi/180),the find sin,cos & tan values.
+#%%
+# Ex:1
+
+import numpy as np 
+a = np.array([0,30,45,60,90]) 
+
+
+# multiply with pi/180 to convert to radians  and finding sin value.
+
+print ('Sine of different angles:' )
+print(np.sin(a*np.pi/180)) 
+print ('\n' ) 
+
+#[-0.02966624  0.02617695 -0.00349065  0.01047178  0.17364818]
+
+
+# calculating the cosine value of angles
+
+print( 'Cosine values for angles in array:') 
+print (np.cos(a*np.pi/180)) 
+print ('\n')  
+
+# output : [0.99955986 0.99965732 0.99999391 0.99994517 0.98480775]
+
+# calculating the tangent value of angles
+
+print('Tangent values for given angles:') 
+print (np.tan(a*np.pi/180))
+
+# output : [-0.02967931  0.02618592 -0.00349067  0.01047236  0.17632698]
+
+# "arcsin", "arcos", and "arctan" functions return the trigonometric 
+# inverse of sin, cos, and tan of the given angle.
+#%%
+# Ex:2
+
+import numpy as np 
+a = np.array([0,30,45,60,90]) 
+
+print('sine values are :') 
+sin = np.sin(a*np.pi/180) 
+print(sin)
+print('\n')  
+
+# output: [0.         0.5        0.70710678 0.8660254  1.        ]
+
+#%%
+# Ex:3
+
+print ('sine inverse of angles, values in radians.')
+inv = np.arcsin(sin) 
+print (inv)
+print ('\n')  
+ 
+# output:
+
+# sine inverse of angles. Returned values are in radians.
+# [0.         0.52359878 0.78539816 1.04719755 1.57079633]
+
+#%%
+# Ex:4
+
+print('Check result by converting to degrees:') 
+print (np.degrees(inv)) 
+print('\n')  
+
+# output: [ 0. 30. 45. 60. 90.]
+
+#%%
+# Ex:5
+
+print('arccos and arctan functions behave similarly:' )
+cos = (np.cos(a*np.pi/180) )
+print (cos )
+print ('\n')
+
+# output:  [ 0.9998477   0.99531218 -0.54463904  0.99995103  0.9023447 ]
+
+#%%
+# Ex:6
+
+print ('Inverse of cos:') 
+inv = (np.arccos(cos) )
+print (inv )
+print ('\n')
+
+# output:  [0.01745329 0.09686577 2.14675498 0.00989602 0.44561746]
+
+#%%
+# Ex:7
+# output:
+
+print ('In degrees:') 
+print (np.degrees(inv)) 
+print ('\n')
+#%%
+# Ex:8
+
+print ('Tan function:') 
+tan = (np.tan(a*np.pi/180)) 
+print (tan)
+print ('\n')
+
+# output: [ 0.01745506  0.09716988 -1.53986496  0.00989634  0.47766128]
+
+#%%
+# Ex:9
+
+print ('Inverse of tan:') 
+inv = (np.arctan(tan))
+print (inv)
+print ('\n') 
+
+# output: [ 0.01745329  0.09686577 -0.99483767  0.00989602  0.44561746]
+
+#%%
+# Ex:10
+
+print('In degrees:')
+print( np.degrees(inv) )
+
+# output:[  1.      5.55  -57.      0.567  25.532]
+
+#%%
+# Rounding Functions:
+
+#%%
+
+# numpy.around() : 
+
+# EX :
+
+import numpy as np 
+a = np.array([1.0,5.55, 123, 0.567, 25.532]) 
+
+print ('Original array:')
+print (a)
+print ('\n')  
+
+print ('After rounding:')
+print (np.around(a) )
+print (np.around(a, decimals = 1))
+print (np.around(a, decimals = -1))
+
+#%%
+# numpy.floor()
+
+# The floor of the scalar x is the largest integer i, such that i <= x. 
+# flooring is always rounding away from "0"
+# EX :
+
+import numpy as np 
+a = np.array([-1.7, 1.5, -0.2, 0.6, 10]) 
+
+print ('The given array:' )
+print( a) 
+print ('\n')  
++
+print('The modified array:') 
+print (np.floor(a))
+
+# Output : [-2.  1. -1.  0. 10.]
+
+#%%
+# numpy.ceil()
+
+# EX :
+
+import numpy as np 
+a = np.array([-1.7, 1.5, -0.2, 0.6, 10]) 
+
+print ('The given array:' )
+print( a )
+print ('\n')  
+
+print ('The modified array:') 
+print (np.ceil(a))
+
+#  Output : [-1.  2. -0.  1. 10.]
+
+#%%
+ 
+# Arithmetic Operations : add(), subtract(), multiply(), and divide()
+
+#%%
+
+# EX :1
+
+import numpy as np 
+a = np.arange(9, dtype = np.float_).reshape(3,3) 
+
+print('Array 1:') 
+print (a) 
+print ('\n')  
+
+# output :Array 1:
+#   [[0. 1. 2.]
+#    [3. 4. 5.]
+#   [6. 7. 8.]]
+
+
+# EX :2
+
+print('Second array:') 
+b = np.array([10,10,10]) 
+print( b )
+print('\n')  
+
+# output :Second array:
+#       [10 10 10]
+
+# EX :3
+
+print ('Add the two arrays:') 
+print (np.add(a,b))
+print ('\n')
+
+# output :Add the two arrays:
+#   [[10. 11. 12.]
+#    [13. 14. 15.]
+#    [16. 17. 18.]]
+
+# EX :4
+
+print('Subtract the two arrays:') 
+print(np.subtract(a,b)) 
+print('\n')  
+
+# output :
+
+
+# EX :5
+
+print('Multiply the two arrays:') 
+print(np.multiply(a,b))
+print('\n')
+
+# output :
+
+#   [[ 0. 10. 20.]
+#    [30. 40. 50.]
+#   [60. 70. 80.]]
+
+
+# EX :6
+
+print('Divide the two arrays:') 
+print(np.divide(a,b))
+
+# output :
+
+# [[0.  0.1 0.2]
+# [0.3 0.4 0.5]
+# [0.6 0.7 0.8]]
+
+#%%
+# Statistical function 
+
+# statistical functions for finding minimum, maximum, percentile standard deviation and variance, etc.
+#%%
+
+# Ex:
+
+import numpy as np
+a = np.array([[3,7,5],[8,4,3],[2,4,9]])  
+print(a)
+
+# output: 
+
+# [[3 7 5]
+# [8 4 3]
+# [2 4 9]]
+
+# we will now apply a.min() function on the array to find min no in the array.
+
+# will print amin() on axis 1(column)
+print(np.amin(a, 1))
+
+# output: [0 2]
+
+# will print amin() on axis 0(row)
+print(np.amin(a,0))
+ 
+# output: [0 1]
+
+# applying amax() function
+print(np.amax(a)) 
+
+# output : 3
+
+# applying amax() function on rows.
+print(np.amax(a, axis = 0))
+
+# output : [2 3]
+
+#%%
+
+# numpy.ptp() : Gives range of values (maximum - minimum) of values along an axis.
+
+import numpy as np
+a = np.array([[3,7,5],[8,4,3],[2,4,9]])  
+print(a)
+
+# output: 
+
+# [[3 7 5]
+# [8 4 3]
+# [2 4 9]]
+
+print(np.amin(a, axis=0)) 
+# output : [2 4 3] (across all rows)
+
+print(np.amin(a, axis=1)) 
+# output : [3 3 2] (across all columns)
+  
+
+# we will apply  ptp() on a.
+print(np.ptp(a))
+
+# output:7
+ 
+# we will apply ptp() along axis 1
+print(np.ptp(a, axis = 1))   
+
+# output: [4 5 7] (maximum - minimum across all the elements in all columns)
+
+#%%
+# Percentile : numpy.percentile()
+
+import numpy as np
+a = np.array(([[30,40,70],[80,20,10],[50,90,60]]))
+print(a)
+
+# output:
+
+#[[30 40 70]
+# [80 20 10]
+# [50 90 60]]
+
+# now we will be Applying percentile() function on "a" 
+print(np.percentile(a,50))
+# output: 50
+
+# Now we will apply percentile() function along axis 1
+print(np.percentile(a,50, axis = 1)) 
+# output: [40. 20. 60.]
+
+# Now we will apply percentile() function along axis 0
+print(np.percentile(a,50, axis = 0))
+# output: [50. 40. 60.]
+
+#%%
+
+# Mean : numpy.mean()
+
+import numpy as np 
+a = np.array([[1,2,3],[3,4,5],[4,5,6]]) 
+print(a)
+
+# now we will calculate the mean acros the array.
+print(np.mean(a))
+
+# output : 3.6666666666666665
+
+# Now we will apply mean() function along axis 1
+print(np.mean(a, axis = 1)) 
+# output: [2. 4. 5.]
+
+# Now we will apply mean() function along axis 0
+print(np.mean(a, axis = 0))
+# output: [2.66666667 3.66666667 4.66666667]
+
+#%%
+# Average : numpy.average()
+
+# It computes the weighted average of elements in an array according to their respective
+# weight given in another array.
+
+import numpy as np 
+a = np.array([1,2,3,4])
+print(a)
+
+# Now we will apply np.average() on "a"
+print(np.average(a))
+# output : 2.5
+
+# now we will define a weight and then will calculate.
+wts = np.array([4,3,2,1]) 
+
+# we will apply the average function again
+print(np.average(a,weights = wts)) 
+# output : 2.0
+
+# we will calculate the sum of weights.
+print(np.average([1,2,3, 4],weights = [4,3,2,1], returned = True))
+
+# output : (2.0, 10.0)
+
+#%%
+# Standard deviation :  std = sqrt(mean(abs(x - x.mean())**2))
+# in numpy we use np.std[] & variance : np.var()
+
+# Ex :
+
+import numpy as np
+a = np.array([1,2,3,4,5,6,7,8,9])
+print(a)
+
+# calculate standard deviation 
+print(np.std(a))
+# Output: 2.581988897471611
+print(np.var(a))
+# output : 6.666666666666667
+
+
+
+
+
+
+
+
+
