@@ -2196,10 +2196,9 @@ print(bin(a),bin(b))
 np.bitwise_and(13,17)
 
 # output : 1
-
-#%%
+# =============================================================================
 # String Functions
-#%%
+# =============================================================================
 # Concatenation 
 
 # two strings:
@@ -2283,9 +2282,9 @@ print(np.char.replace ('Good morning arab', 'arab', 'Aryan'))
 
 # output : Good morning Aryan
 
-#%%
-
+# =============================================================================
 # Mathematical Functions
+# =============================================================================
 
 # NumPy provides standard trigonometric functions, functions for arithmetic operations, 
 # handling complex numbers, etc.
@@ -2475,11 +2474,9 @@ print (np.ceil(a))
 
 #  Output : [-1.  2. -0.  1. 10.]
 
-#%%
- 
+# =============================================================================
 # Arithmetic Operations : add(), subtract(), multiply(), and divide()
-
-#%%
+# =============================================================================
 
 # EX :1
 
@@ -2550,13 +2547,14 @@ print(np.divide(a,b))
 # [0.3 0.4 0.5]
 # [0.6 0.7 0.8]]
 
-#%%
+# =============================================================================
 # Statistical function 
-
+# =============================================================================
 # statistical functions for finding minimum, maximum, percentile standard deviation and variance, etc.
+
 #%%
 
-# Ex:
+# ex:
 
 import numpy as np
 a = np.array([[3,7,5],[8,4,3],[2,4,9]])  
@@ -2709,11 +2707,626 @@ print(np.std(a))
 print(np.var(a))
 # output : 6.666666666666667
 
+# =============================================================================
+# Sort, Search & Counting Functions : sorting algorithm .
+# =============================================================================
+
+ 
+numpy.sort : umpy.sort(a, axis, kind, order)
+  
+# Ex:
+  
+import numpy as np
+a = np.array([[1,8,9],[5,3,4]])
+print(a)
+
+# output :
+#   [[1 8 9]
+#   [5 3 4]]
+
+# Applyting sort () function
+
+print(np.sort(a))
 
 
+# output : [[1 8 9]
+#            [3 4 5]]
+
+# sorting along the axis 0
+
+print(np.sort(a, axis = 0))
+
+# output :   [[1 3 4]
+#            [5 8 9]]
 
 
+# sorting along the axis 1
+
+print(np.sort(a, axis = 1))
+
+# output :  [[1 8 9]
+#            [3 4 5]]
+
+# Ex : 2
+
+# we will use order parametrer in sort function
+
+dt = np.dtype([('name', 'S10'),('age', int)]) 
+a = np.array([("Aryan",21),("Roney",25),("Parth", 17), ("Sweety",27)], dtype = dt) 
+print(a)
+
+# output : [(b'Aryan', 21) (b'Roney', 25) (b'Parth', 17) (b'Sweety', 27)]
+
+# now we will order by name
+
+print(np.sort(a, order = 'name'))
+
+# output : [(b'Aryan', 21) (b'Parth', 17) (b'Roney', 25) (b'Sweety', 27)]
+
+#%%
+
+# numpy.argsort() : indirect way of sorting the array
+
+# Ex:
+
+import numpy as np 
+x = np.array([3, 1, 2]) 
+print (x )
+
+# We will apply  np.argsort() function
+y = np.argsort(x) 
+print(y) 
+
+# output : [1 2 0]
+
+# we willReconstruct the original array using loop.
+
+for i in y: 
+   print(x[i])
+   
+# output :   
+1
+2
+3
+
+#%%
+
+# numpy.lexsort()
+
+# This performs an indirect sorting using a sequence of keys.
+
+a = ('Aryan','Parth','Roney','Sweety')
+b = ('a.y.','a.y.','b.y.','b.y.')
+
+array1 = np.lexsort((a,b))
+print(array1)
+
+# we will use this index to get sorted data
+print( [a[i] + ", " + b[i] for i in array1])
+
+# output : ['Aryan, a.y.', 'Parth, a.y.', 'Roney, b.y.', 'Sweety, b.y.']
+
+#%%
+# numpy.argmax() and numpy.argmin() : returns a minimum and maximum element respectively 
+# along the axis.
+
+# Ex:
+
+import numpy as np 
+a = np.array([[30,40,70],[80,20,10],[50,90,60]]) 
+print(a) 
+# output :
+#   [[30 40 70]
+#   [80 20 10]
+#   [50 90 60]]
 
 
+# output :Apply argmax() function
+print(np.argmax(a)) 
+# output : 7
 
 
+# output :print 'Index of maximum number in flattened array' 
+print(a.flatten()) 
+# output : [30 40 70 80 20 10 50 90 60]
+
+
+# output :print 'Array containing indices of maximum along axis 0:' 
+maxindex = np.argmax(a, axis = 0) 
+print(maxindex) 
+# output : [1 2 0]
+
+# output :print 'Array containing indices of maximum along axis 1:' 
+maxindex = np.argmax(a, axis = 1) 
+print(maxindex) 
+# output : [2 0 1]
+
+
+# output :print 'Applying argmin() function:' 
+minindex = np.argmin(a) 
+print(minindex) 
+# output : 5
+   
+# output :print 'Flattened array:' 
+print(a.flatten()[minindex]) 
+# output : 10
+
+# output :print 'Flattened array along axis 0:' 
+minindex = np.argmin(a, axis = 0) 
+print(minindex)
+# output : [0 1 1]
+
+# output :print 'Flattened array along axis 1:' 
+minindex = np.argmin(a, axis = 1) 
+print(minindex)
+# output : [0 2 0]
+
+#%%
+# numpy.nonzero() : returns the indices of non-zero elements in the input array.
+
+# Ex:
+
+import numpy as np 
+a = np.array([[30,40,0],[0,20,10],[50,0,60]])
+print(a)
+# output : [[30 40  0]
+#           [ 0 20 10]
+#           [50  0 60]]
+
+# we will apply nonzero function to it
+
+print(np.nonzero(a))
+
+# output : (array([0, 0, 1, 1, 2, 2], dtype=int64), array([0, 1, 1, 2, 0, 2], dtype=int64))
+
+#%%
+
+# numpy.where :
+
+import numpy as np
+a = np.arange(9.).reshape(3,3)
+print(a)
+
+# output :
+#   [[0. 1. 2.]
+#    [3. 4. 5.]
+#    [6. 7. 8.]]
+
+# we will apply the wehere function here
+x = np.where(a > 3) 
+print(x)  
+# output : (array([1, 1, 2, 2, 2], dtype=int64), array([1, 2, 0, 1, 2], dtype=int64))
+
+# we will apply 'x' on 'a'
+print(a[x])
+# output : [4. 5. 6. 7. 8.]
+
+#%%
+
+# numpy.extract() : Returns the value against certain condition.
+
+import numpy as np
+a = np.arange(9.).reshape(3,3)
+print(a)
+
+# now we will apply the condition on which the calculation will happen.
+
+condition = np.mod(a,2) == 0
+print(condition)
+# output:
+#   [[ True False  True]
+#   [False  True False]
+#    [ True False  True]]
+
+
+# now we will apply 'condition' on 'a'
+
+print(np.extract(condition, a))
+
+# output : [0. 2. 4. 6. 8.]
+
+# =============================================================================
+# Copies & Views :
+# =============================================================================
+# Copies : When the contents are physically stored in another location, it is called Copy.
+# Views : a different view of the same memory content is provided, we call it as View.
+
+# No Copy :
+
+import numpy as np
+a = np.arange(6)
+print(a)
+# output : [0 1 2 3 4 5]
+
+# applying the id() function on "a"
+print(id(a))
+# output :123121136
+
+# now we will define b = a
+b = a
+print(b)
+# output :[[0 1]
+#       [2 3]
+#       [4 5]]
+
+# we will apply id() function on b and we willm see the output same as "a"
+print(id(b))
+# output : 123121136
+
+# check the shpae of b
+b.shape = 3,2
+print(b)
+# output :
+#   [[0 1]
+#    [2 3]
+#    [4 5]]
+
+print(a)
+# output :[[0 1]
+#         [2 3]
+#         [4 5]]
+
+#%%
+# View or Shallow Copy
+
+# A new array object that looks at the same data of the original array. 
+# Change in dimensions of the new # array doesn’t change dimensions of the original.
+
+import numpy as np
+a = np.arange(6).reshape(3,2)
+print(a)
+# output : [[0 1]
+#           [2 3]
+#           [4 5]]
+
+
+# now we will create a view of "a"
+b = a.view()
+print(b)
+# output :[[0 1]
+#        [2 3]
+#        [4 5]]
+
+# we will check the id of both "a" & "b"
+print(id(a))
+# output : 154624208
+print(id(b))
+# output : 154627008
+
+
+# we will change the shape of "b" which will never change the shape of "a"
+b.shape = 2,3 
+print(b)
+# output :[[0 1 2]
+#        [3 4 5]]
+
+print(a)
+# output :
+#   [[0 1]
+#    [2 3]
+#    [4 5]]
+
+#%%
+# Deep Copy
+# ndarray.copy() function creates a deep copy.which is a complete copy of array and its data.
+
+import numpy as np 
+a = np.array([[10,10], [2,3], [4,5]])  
+print(a)  
+# output :
+#   [[10 10]
+#    [ 2  3]
+#    [ 4  5]]
+
+# Create a deep copy of a.
+b = a.copy() 
+print(b) 
+# output :
+#   [[10 10]
+#    [ 2  3]
+#    [ 4  5]]
+
+# "b" does not share any memory of a 
+print('Can we write b is a') 
+print(b is a)  
+# output :Can we write b is a
+#          False
+
+
+# 'Change the contents of b:' 
+b[0,0] = 100 
+
+print('Modified array b:') 
+print(b)  
+# output :
+#       [[100  10]
+#        [  2   3]
+#       [  4   5]]
+
+
+# "a" remains unchanged.
+print(a)
+# output :[[10 10]
+#        [ 2  3]
+#        [ 4  5]]
+
+# =============================================================================
+# Matrix Library: 
+# =============================================================================
+
+# numpy.matlib : this module returns matrices instead of ndarrays.
+
+
+# Matrix library (numpy.matlib)
+# With the following replacement functions that return matrices instead of ndarrays.
+
+# Functions that are also in the numpy namespace and return matrices :
+
+# np.mat('1 1; 1 1') > Interpret the input as a matrix.
+
+# np.matrix('1 2; 3 4') >  Returns a matrix from an array-like object, or from a string of data.
+
+# np.asmatrix(x),x = input  > Interpret the input as a matrix.
+
+# np.bmat([[A, B], [C, D]]) (define A,B,C,D)  > Build a matrix object from a string,
+# nested sequence, or array.
+
+# Replacement functions in matlib : Ex:
+# Ex : np.matlib.empty((2, 2)) :  Returns a new matrix of given shape and type, 
+# without initializing entries.
+# Ex: np.matlib.empty((2, 2), dtype=int)
+
+# Ex: np.matlib.zeros((2, 3)) :  Returns a matrix of given shape and type, filled with zeros.
+
+# Ex: np.matlib.ones((2,3)) : Matrix of ones.
+
+# Ex: np.matlib.eye(3, k=1, dtype=float) : Returns a matrix with ones on the diagonal 
+# and zeros elsewhere.
+
+# Ex: np.matlib.identity(3, dtype=int) :  Returns the square identity matrix of given size.
+
+# Ex : Define : a0 = np.array(1)
+#       np.matlib.repmat(a0, 2, 3) :  Repeat a 0-D to 2-D array or matrix MxN times.
+# Ex:   a1 = np.arange(4)
+#        np.matlib.repmat(a1, 2, 2)
+
+# Ex: np.matlib.rand(2, 3)  : Returns a matrix of random values with given shape.
+#      np.matlib.rand((2, 3))
+#      np.matlib.rand((2, 3), 4)
+
+# ex: np.matlib.randn(*args) returns a random matrix with data from the “standard normal”
+# distribution.(see example in #numpy.matlib.randn )
+
+# =============================================================================
+# Linear Algebra
+# =============================================================================
+# np.dot
+
+# dot product of two arrays.
+# for 2-D array it's matrix multplication.
+# for 1-D, it is inner product of vectors.
+# for n dimensional it is a sum product over the last axis of a and the second-last axis of b.
+
+# Ex:
+
+import numpy.matlib 
+import numpy as np 
+a = np.array([[1,2],[3,4]]) 
+b = np.array([[11,12],[13,14]]) 
+np.dot(a,b)
+
+# output:
+# array([[37, 40],
+#       [85, 92]])
+
+# The calculation will be as follows
+(1*11+2*13,1*12+2*14),(3*11+4*13, 3*12+4*14)
+
+#%%
+# np.vdot()
+
+# It is the dot product of two vectors.if ist argument is complex then the 
+# conjugate is used for the calculation.If argument is multidimensiinal then calculation is flatten.
+# 
+
+import numpy.matlib 
+import numpy as np 
+a = np.array([[1,2],[3,4]]) 
+b = np.array([[11,12],[13,14]]) 
+print(np.vdot(a,b)) 
+
+
+# output: 130
+
+# The calculation : 1*11+2*12+3*13+4*14
+
+#%%
+
+# np.innner() : Inner product of two array.
+import numpy.matlib 
+import numpy as np 
+a = np.array([[1,2],[3,4]]) 
+b = np.array([[11,12],[13,14]]) 
+print(np.inner(a,b)) 
+
+# The calculation is done as (1*11+2*12, 1*13+2*14 
+#                            3*11+4*12, 3*13+4*14 )
+
+#%%
+# np.matmul() : Matrix product of two arrays
+
+# we can do the matrix multiplication for 2d array,2d mixed with 1d etc.
+
+#%%
+# determinant : numpy.linalg.det()
+
+# Computes the determinant of the array
+
+#%%
+# solve : numpy.linalg.solve() 
+
+# Solves the linear matrix equation
+
+# inv : numpy.linalg.inv()
+
+# Finds the multiplicative inverse of the matrix
+
+# =============================================================================
+# MATPLOTLIB
+# =============================================================================
+
+# This is the plotting library for python.
+# It is used along with NumPy to provide an environment that is an effective open 
+# source alternative for MatLab.
+# from matplotlib import pyplot as plt
+# for plotting 2-D arrays use pyplot(). function.
+
+#%%
+# Ex: pyplot
+
+import numpy as np
+from matplotlib import pyplot as plt
+x = np.arange(1,11) 
+y = 2 * x + 5 
+plt.title("Matplotlib demo") 
+plt.xlabel("x axis caption") 
+plt.ylabel("y axis caption") 
+plt.plot(x,y,"or") 
+plt.show()
+
+#%%
+# Ex : sinewave plot
+
+import numpy as np 
+import matplotlib.pyplot as plt  
+
+# Compute the x and y coordinates for points on a sine curve 
+x = np.arange(0, 3 * np.pi, 0.1) 
+y = np.sin(x) 
+plt.title("sine wave form") 
+
+# Plot the points using matplotlib 
+plt.plot(x, y,"or") 
+plt.show() 
+
+#%%
+# Ex2 : sinewave equation A sin(wt),A = amplitude, w = Frequency,t = time
+
+import numpy as np
+import matplotlib.pyplot as plt
+# get x value 
+x = np.arange(0, 10, 0.1);
+# amplitude of sine wave is sine(time)
+y = np.sin(x)
+# we will plot a sine wave for the amplitude and time
+plt.plot(x,y,"vm")
+# title of the sine wave 
+plt.title('Sine wave Time vs Amplitude')
+plt.show()
+
+#%%
+
+# Ex3 : sub plot(plot different things in same figure)
+
+import numpy as np
+import matplotlib.pyplot as plt
+# Compute the x and y coordinates for points on sine and cosine curves 
+x = np.arange(0, 3 * np.pi, 0.1) 
+y_sin = np.sin(x) 
+y_cos = np.cos(x) 
+
+# Set up a subplot grid that has height 2 and width 1, 
+# and set the first such subplot as active. 
+plt.subplot(2, 1, 1)
+   
+# Make the first plot 
+plt.plot(x, y_sin,"r") 
+plt.title('Sine')  
+   
+# Set the second subplot as active, and make the second plot. 
+plt.subplot(2, 1, 2) 
+plt.plot(x, y_cos,"m") 
+plt.title('Cosine')  
+   
+# Show the figure. 
+plt.show()
+
+#%%
+# bar() : for generating bar graphs
+
+from matplotlib import pyplot as plt
+x = [5,8,10]
+y = [12,16,6]
+
+x2 = [6,9,11]
+y2 = [6,15,7]
+
+plt.bar(x,y, align = 'center')
+plt.bar(x2,y2, color = 'r', align = 'center')
+plt.title("Bar Graph")
+plt.ylabel('Y axis') 
+plt.xlabel('X axis')  
+plt.show()
+
+
+# =============================================================================
+# Histogram :
+# =============================================================================
+# numpy.histogram() takes input array an bins as the two parametres.
+# alha for the opacity of the graph.
+# 
+
+Ex :
+
+import numpy as np    
+from matplotlib import pyplot as plt
+a = np.array([22,87,5,43,56,73,55,54,11,20,51,5,79,31,27])
+plt.hist(a, bins =[20,40,60,80,100],ec='red')
+plt.title("Histogram")
+plt.show()
+
+# Ex:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.random.rand((100)) 
+bins = np.linspace(0, 2, 30)
+plt.title('Relative Amplitude',fontsize=10)
+plt.xlabel('Random Histogram')
+plt.ylabel('Frequency',fontsize=10)
+plt.hist(x, bins, alpha= 0.7, histtype='bar', color = 'r', ec='b')
+
+plt.legend(loc='upper right',fontsize=10)
+plt.xticks(fontsize = 10) 
+plt.yticks(fontsize = 10) 
+plt.show()
+
+# =============================================================================
+# I/O with numpy 
+# =============================================================================
+# load() & save() functions with numpy extensions that takes care about the binary files.
+# loadtxt() and savetxt() handales text files.
+
+#%%
+# numpy.save()
+
+import numpy as np 
+a = np.array([1,2,3,4,5]) 
+np.save('outfile',a)
+
+# to reconstruct an array from the "outfile.npy" we will use load() function.
+import numpy as np 
+b = np.load('outfile.npy') 
+print(b) 
+# =============================================================================
+# savetxt()
+# =============================================================================
+# It uses savetxt() and loadtxt() for saving and loading 
+
+import numpy as np 
+
+a = np.array([1,2,3,4,5]) 
+np.savetxt('out.txt',a) 
+b = np.loadtxt('out.txt') 
+print(b) 
