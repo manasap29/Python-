@@ -428,7 +428,7 @@ print(count_digit)
     
 
 
-# In[3]:
+# In[ ]:
 
 
 x = input()
@@ -441,7 +441,7 @@ for i in x:
 print("%d %d" %(count_letter,count_digit))
 
 
-# In[8]:
+# In[ ]:
 
 
 # Write a program that accepts a sentence and calculate the number of upper case letters and lower case letters.
@@ -452,7 +452,7 @@ print("%d %d" %(count_letter,count_digit))
 # LOWER CASE 9
 
 
-# In[14]:
+# In[ ]:
 
 
 x = input()
@@ -478,7 +478,7 @@ print("%d %d" %(upper,lower))
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
 
-# In[18]:
+# In[ ]:
 
 
 a = input()
@@ -489,5 +489,408 @@ print(total)
 # In[ ]:
 
 
+# Use a list comprehension to square each odd number in a list. The list is input by a sequence of comma-separated numbers.
+# Suppose the following input is supplied to the program:
+# 1,2,3,4,5,6,7,8,9
+# Then, the output should be:
+# 1,3,5,7,9
 
+# Hints:
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[ ]:
+
+
+list = [i for i in input().split(',') if int(i)% 2 != 0]
+print(list)         
+
+
+# In[ ]:
+
+
+# list = input().split(',')
+# list = list(filter(lambda i :i%2!=0, list))
+# list
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program that computes the net amount of a bank account based a transaction log from console input. The transaction log format is shown as following:
+# D 100
+# W 200
+
+# D means deposit while W means withdrawal.
+# Suppose the following input is supplied to the program:
+# D 300
+# D 300
+# W 200
+# D 100
+# Then, the output should be:
+# 500
+
+# Hints:
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[ ]:
+
+
+class Account:
+    def __init__(self,myaccount,balance):
+        self.myaccount = myaccount
+        self.balance = balance
+     
+    def deposit(self,dep_amt):
+        self.balance = self.balance + dep_amt
+        print('Amount Deposited ')
+        
+    def withdraw(self,wd_amt):
+        if self.balance >= wd_amt:
+            self.balance = self.balance - wd_amt
+            print('Withdrawal Accepted')
+        else:
+            print('Funds Unavailable!')   
+
+
+# In[ ]:
+
+
+acct  = Account('Aryan',0)
+
+
+# In[ ]:
+
+
+acct.deposit(300)
+
+
+# In[ ]:
+
+
+acct.deposit(300)
+
+
+# In[ ]:
+
+
+acct.withdraw(200)
+
+
+# In[ ]:
+
+
+acct.deposit(100)
+
+
+# In[ ]:
+
+
+acct.balance
+
+
+# In[ ]:
+
+
+# Question:
+# A website requires the users to input username and password to register. Write a program to check the validity of password input by users.
+# Following are the criteria for checking the password:
+# 1. At least 1 letter between [a-z]
+# 2. At least 1 number between [0-9]
+# 1. At least 1 letter between [A-Z]
+# 3. At least 1 character from [$#@]
+# 4. Minimum length of transaction password: 6
+# 5. Maximum length of transaction password: 12
+# Your program should accept a sequence of comma separated passwords and will check them according to the above criteria. Passwords that match the criteria are to be printed, each separated by a comma.
+# Example
+# If the following passwords are given as input to the program:
+# ABd1234@1,a F1#,2w3E*,2We3345
+# Then, the output of the program should be:
+# ABd1234@1
+
+# Hints:
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[ ]:
+
+
+def check(x):
+    cnt = (6<=len(x) and len(x)<=12)
+    for i in x:
+        if i.isupper():
+            cnt+=1
+            break
+    for i in x:
+        if i.islower():
+            cnt+=1
+            break
+    for i in x:
+        if i.isnumeric():
+            cnt+=1
+            break
+    for i in x:
+        if i=='@' or i=='#'or i=='$':
+            cnt+=1
+            break
+    return cnt == 5              
+
+str = input().split(',')
+list = filter(check,str)           
+print(",".join(list)) 
+
+
+# In[ ]:
+
+
+import re
+password = input()
+re.search(r"([a-z]+[0-9]+[A-Z]+len(6,12))", password)
+
+
+# In[ ]:
+
+
+# Question:
+# You are required to write a program to sort the (name, age, height) tuples by ascending order where name is string, age and height are numbers. The tuples are input by console. The sort criteria is:
+# 1: Sort based on name;
+# 2: Then sort based on age;
+# 3: Then sort by score.
+# The priority is that name > age > score.
+# If the following tuples are given as input to the program:
+# Tom,19,80
+# John,20,90
+# Jony,17,91
+# Jony,17,93
+# Json,21,85
+# Then, the output of the program should be:
+# [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
+
+# Hints:
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+# We use itemgetter to enable multiple sort keys.
+
+
+# In[ ]:
+
+
+l = []
+while True:
+    s = input()
+    if not s:
+        break
+    l.append(tuple(s.split(',')))
+print(l)
+
+
+# In[ ]:
+
+
+# Question:
+# Define a class with a generator which can iterate the numbers, which are divisible by 7, between a given range 0 and n.
+
+# Hints:
+# Consider use yield
+
+
+# In[ ]:
+
+
+def number(n):
+    for i in range(0,n):
+        if i%7 == 0:
+            yield i
+for num in number(100):
+    print(num)
+
+
+# In[ ]:
+
+
+A robot moves in a plane starting from the original point (0,0). The robot can move toward UP, DOWN, LEFT and RIGHT with a given steps. The trace of robot movement is shown as the following:
+UP 5
+DOWN 3
+LEFT 3
+RIGHT 2
+¡­
+The numbers after the direction are steps. Please write a program to compute the distance from current position after a sequence of movement and original point. If the distance is a float, then just print the nearest integer.
+Example:
+If the following tuples are given as input to the program:
+UP 5
+DOWN 3
+LEFT 3
+RIGHT 2
+Then, the output of the program should be:
+2
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[ ]:
+
+
+Question:
+
+Write a program to compute the frequency of the words from the input. The output should output after sorting the key alphanumerically.
+
+Suppose the following input is supplied to the program:
+
+New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3.
+
+Then, the output should be:
+
+2:2
+3.:1
+3?:1
+New:1
+Python:5
+Read:1
+and:1
+between:1
+choosing:1
+or:2
+to:1
+
+
+# In[ ]:
+
+
+x = input().split()
+word = sorted(set(x))     
+
+for i in word:
+    print("{0}:{1}".format(i,x.count(i)))
+
+
+# In[ ]:
+
+
+x = input().split()
+dict = {i:x.count(i) for i in x}
+dict = sorted(dict.items())
+
+for i in dict:
+    print("%s:%d"%(i[0],i[1]))
+
+
+# In[ ]:
+
+
+# Question:
+#     Write a method which can calculate square value of number
+
+# Hints:
+#     Using the ** operator
+
+
+# In[ ]:
+
+
+n=int(input())
+print(n**2)
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can compute the sum of two numbers.
+
+# Hints:
+# Define a function with two numbers as arguments. You can compute the sum in the function and return the value.
+
+
+# In[ ]:
+
+
+sum = lambda n1,n2 : n1 + n2
+print(sum(16,5))
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function that can convert a integer into a string and print it in console.
+
+# Hints:
+
+# Use str() to convert a number to string.
+
+
+# In[ ]:
+
+
+def print_val(n):
+    print(str(n))
+print_val(10)
+
+
+# In[ ]:
+
+
+conv = lambda x : str(x)
+n = conv(10)
+print(n)
+
+
+# In[ ]:
+
+
+Question:
+Define a function that can receive two integral numbers in string form and compute their sum and then print it in console.
+
+Hints:
+
+Use int() to convert a string to integer.
+
+
+# In[ ]:
+
+
+sum = lambda x1,x2 : int(x1) + int(x2)
+print(sum(10,25))
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function that can accept two strings as input and concatenate them and then print it in console.
+
+# Hints:
+
+# Use + to concatenate the strings
+
+
+# In[ ]:
+
+
+sum = lambda x1,x2 : x1 + x2
+print(sum("10","25"))
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function that can accept two strings as input and print the string with maximum length in console. If two strings have the same length, then the function should print al l strings line by line.
+
+# Hints:
+
+# Use len() function to get the length of a string
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function that can accept an integer number as input and print the "It is an even number" if the number is even, otherwise print "It is an odd number".
+
+# Hints:
+
+# Use % operator to check if a number is even or odd.
 
