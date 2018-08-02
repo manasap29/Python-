@@ -887,10 +887,554 @@ print(sum("10","25"))
 # In[ ]:
 
 
+def string_val(x1,x2):
+    len1 = len(x1)
+    len2 = len(x2)
+    if len1>len2:
+        print(x1)
+    if len1<len2:
+        print(x2)
+    else:
+        print(x1)
+        print(x2)
+print(string_val("one","two"))
+
+
+# In[ ]:
+
+
 # Question:
 # Define a function that can accept an integer number as input and print the "It is an even number" if the number is even, otherwise print "It is an odd number".
 
 # Hints:
 
 # Use % operator to check if a number is even or odd.
+
+
+# In[ ]:
+
+
+def number(n):
+    if n % 2 == 0:
+        print("It is an even number")
+    else:
+        print("It is an odd number")
+number(27)
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can print a dictionary where the keys are numbers between 1 and 3 (both included) and the values are square of keys.
+
+# Hints:
+# Use dict[key]=value pattern to put entry into a dictionary.
+# Use ** operator to get power of a number.
+
+
+# In[ ]:
+
+
+def printdict():
+    dict={i:i**2 for i in range(1,3)}   # Using comprehension method and
+    print(dict)
+
+printdict()
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can print a dictionary where the keys are numbers between 1 and 20 (both included) and the values are square of keys.
+
+# Hints:
+# Use dict[key]=value pattern to put entry into a dictionary.
+# Use ** operator to get power of a number.
+# Use range() for loops.
+
+
+# In[ ]:
+
+
+def printdict():
+    dict={i:i**2 for i in range(1,20)}
+    print(dict)
+printdict()
+
+
+# In[ ]:
+
+
+def printdict():
+    dict={i:i**2 for i in range(1,20)}
+    print(dict.keys())
+printdict()
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can generate and print a list where the values are square of numbers between 1 and 20 (both included).
+
+# Hints:
+# Use ** operator to get power of a number.
+# Use range() for loops.
+# Use list.append() to add values into a list.
+
+
+# In[ ]:
+
+
+def printlist():
+    list=[i**2 for i in range(1,20)]
+    print(list)
+printlist()
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print the first 5 elements in the list.
+
+# Hints:
+# Use ** operator to get power of a number.
+# Use range() for loops.
+# Use list.append() to add values into a list.
+# Use [n1:n2] to slice a list
+
+
+# In[ ]:
+
+
+def printlist():
+    list = [i**2 for i in range(1,20)]
+    for i in range(5):
+        print(list[i])
+printlist()
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print all values except the first 5 elements in the list.
+
+# Hints:
+# Use ** operator to get power of a number.
+# Use range() for loops.
+# Use list.append() to add values into a list.
+# Use [n1:n2] to slice a list
+
+
+# In[ ]:
+
+
+def printList():
+    lst = [i ** 2 for i in range(1, 21)]
+    for i in range(5,20):
+        print(lst[i])
+
+printList()
+
+
+# In[ ]:
+
+
+# Question:
+# Define a function which can generate and print a tuple where the value are square of numbers between 1 and 20 (both included). 
+
+# Hints:
+# Use ** operator to get power of a number.
+# Use range() for loops.
+# Use list.append() to add values into a list.
+# Use tuple() to get a tuple from a list.
+
+
+# In[ ]:
+
+
+def printtuple():
+    lst = [i**2 for i in range(1,21)]
+    print(tuple(lst))
+printtuple()
+
+
+# In[ ]:
+
+
+# Question:
+# With a given tuple (1,2,3,4,5,6,7,8,9,10), write a program to print the first half values in one line and the last half values in one line. 
+
+# Hints:
+# Use [n1:n2] notation to get a slice from a tuple.
+
+
+# In[ ]:
+
+
+tup = (1,2,3,4,5,6,7,8,9,10)
+tup2=tup[5:]
+tup1=tup[:5]
+print(tup1)
+print(tup2)
+
+
+# In[ ]:
+
+
+tup = (1,2,3,4,5,6,7,8,9,10)
+list1,list2 = [],[]
+for i in range(0,5):
+    list1.append(tup[i])
+    
+for i in range(5,10):
+    list2.append(tup[i])
+    
+print(list1)
+print(list2)
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program to generate and print another tuple whose values are even numbers in the given tuple (1,2,3,4,5,6,7,8,9,10). 
+
+# Hints:
+# Use "for" to iterate the tuple
+# Use tuple() to generate a tuple from a list.
+
+
+# In[ ]:
+
+
+tpl = (1,2,3,4,5,6,7,8,9,10)
+tpl1 = tuple(i for i in tpl if i%2 == 0)
+print(tpl1)
+
+
+# In[ ]:
+
+
+tup = (1,2,3,4,5,6,7,8,9,10)
+tup1 = {'evens': list(filter(lambda x: x%2 == 0, tup))}
+tup1
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program which accepts a string as input to print "Yes" if the string is "yes" or "YES" or "Yes", otherwise print "No". 
+
+# Hints:
+# Use if statement to judge condition.
+
+
+# In[ ]:
+
+
+str = input()
+if str.lower() == 'yes':
+    print("Yes")
+else:
+    print("No")
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program which can filter even numbers in a list by using filter function. The list is: [1,2,3,4,5,6,7,8,9,10].
+
+# Hints:
+
+# Use filter() to filter some elements in a list.
+# Use lambda to define anonymous functions.
+
+
+# In[ ]:
+
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+lst1 = list(filter(lambda x: x%2 == 0,lst))
+print(lst1)
+
+
+# In[ ]:
+
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+lst1 =[i for i in lst if i%2 ==0]
+lst1
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program which can map() to make a list whose elements are square of elements in [1,2,3,4,5,6,7,8,9,10].
+
+# Hints:
+
+# Use map() to generate a list.
+# Use lambda to define anonymous functions.
+
+
+# In[ ]:
+
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+squaredno = map(lambda x: x**2, lst)
+print(list(squaredno))
+
+
+# In[ ]:
+
+
+Question:
+Write a program which can map() and filter() to make a list whose elements are square of even number in [1,2,3,4,5,6,7,8,9,10].
+
+Hints:
+
+Use map() to generate a list.
+Use filter() to filter elements of a list.
+Use lambda to define anonymous functions.
+
+
+# In[ ]:
+
+
+lst = [1,2,3,4,5,6,7,8,9,10]
+squaredeven = map(lambda x: x**2, filter(lambda x: x%2==0, lst))
+print(list(squaredeven))
+
+
+# In[ ]:
+
+
+# Question:
+# Write a program which can filter() to make a list whose elements are even number between 1 and 20 (both included).
+
+# Hints:
+# Use filter() to filter elements of a list.
+# Use lambda to define anonymous functions.
+
+
+# In[ ]:
+
+
+lst = filter(lambda x: x%2==0, range(1,21))
+print(list(lst))
+
+
+# In[ ]:
+
+
+Question:
+Write a program which can map() to make a list whose elements are square of numbers between 1 and 20 (both included).
+
+Hints:
+Use map() to generate a list.
+Use lambda to define anonymous functions.
+
+
+# In[ ]:
+
+
+lst =  map(lambda x: x**2, range(1,21))
+print(list(lst))
+
+
+# In[ ]:
+
+
+# Question:
+# Define a class named American which has a static method called printNationality.
+
+# Hints:
+# Use @staticmethod decorator to define class static method.
+
+
+# In[ ]:
+
+
+# Question:
+# Define a class named American and its subclass NewYorker. 
+
+# Hints:
+# Use class Subclass(ParentClass) to define a subclass.
+
+
+# In[ ]:
+
+
+# Question:
+# Define a class named Circle which can be constructed by a radius. The Circle class has a method which can compute the area. 
+
+# Hints:
+# Use def methodName(self) to define a method.
+
+
+# In[ ]:
+
+
+class Circle:
+    pi = 3.14
+    def __init__(self, radius):
+        self.radius = radius 
+        self.area = radius * radius * Circle.pi
+c = Circle(12)
+print(c.area)
+
+
+# In[ ]:
+
+
+# Define a class named Rectangle which can be constructed by a length and width. The Rectangle class has a method which can 
+compute the area. 
+
+# Hints:
+# Use def methodName(self) to define a method.
+
+
+# In[ ]:
+
+
+class Rectangle():
+    def __init__(self,len,wid):
+        self.len = len
+        self.wid = wid
+    def area(self):
+        return self.len * self.wid
+rect = Rectangle(22,45)
+print(rect.area())
+
+
+# In[ ]:
+
+
+Define a class named Shape and its subclass Square. The Square class has an init function which takes a length as argument.
+Both classes have a area function which can print the area of the shape where Shape's area is 0 by default.
+
+Hints:
+To override a method in super class, we can define a method with the same name in the super class.
+
+
+# In[ ]:
+
+
+
+    
+
+
+# In[ ]:
+
+
+Write a function to compute 5/0 and use try/except to catch the exceptions.
+
+Hints:
+Use try/except to catch exceptions.
+
+
+# In[2]:
+
+
+try:
+    x = 5/0
+except:
+    print("Error dividing by zero")
+try:
+    x = int("fred")
+except:
+    print("Error converting fred to a number")
+
+
+# In[4]:
+
+
+# Define a custom exception class which takes a string message as attribute.
+
+# Hints:To define a custom exception, we need to define a class inherited from Exception.
+
+
+# In[ ]:
+
+
+# Question:
+
+# Assuming that we have some email addresses in the "username@companyname.com" format, please write program to print the user name of a given email address. Both user names and company names are composed of letters only.
+
+# Example:
+# If the following email address is given as input to the program:
+
+# john@google.com
+
+# Then, the output of the program should be:
+
+# john
+
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+# Hints:
+
+# Use \w to match letters.
+
+
+# In[ ]:
+
+
+# Question:
+
+# Assuming that we have some email addresses in the "username@companyname.com" format, please write program to print the company name of a given email address. Both user names and company names are composed of letters only.
+
+# Example:
+# If the following email address is given as input to the program:
+
+# john@google.com
+
+# Then, the output of the program should be:
+
+# google
+
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+# Hints:
+
+# Use \w to match letters.
+
+
+# In[ ]:
+
+
+# Question:
+
+# Write a program which accepts a sequence of words separated by whitespace as input to print the words composed of digits only.
+
+# Example:
+# If the following words is given as input to the program:
+
+# 2 cats and 3 dogs.
+
+# Then, the output of the program should be:
+
+# ['2', '3']
+
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+# Hints:
+
+# Use re.findall() to find all substring using regex.
+
+
+# In[8]:
+
+
+import re
+str = input()
+print(re.findall("\d+",str))
 
