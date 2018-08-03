@@ -377,7 +377,6 @@ print(",".join(data))
 # Question:
 # Write a program, which will find all such numbers between 1000 and 3000 (both included) such that each digit of the number is an even number.
 # The numbers obtained should be printed in a comma-separated sequence on a single line.
-
 # Hints:
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
@@ -473,7 +472,6 @@ print("%d %d" %(upper,lower))
 # 9
 # Then, the output should be:
 # 11106
-
 # Hints:
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
@@ -494,7 +492,6 @@ print(total)
 # 1,2,3,4,5,6,7,8,9
 # Then, the output should be:
 # 1,3,5,7,9
-
 # Hints:
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
@@ -521,7 +518,6 @@ print(list)
 # Write a program that computes the net amount of a bank account based a transaction log from console input. The transaction log format is shown as following:
 # D 100
 # W 200
-
 # D means deposit while W means withdrawal.
 # Suppose the following input is supplied to the program:
 # D 300
@@ -530,7 +526,6 @@ print(list)
 # D 100
 # Then, the output should be:
 # 500
-
 # Hints:
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
@@ -667,7 +662,6 @@ re.search(r"([a-z]+[0-9]+[A-Z]+len(6,12))", password)
 # Json,21,85
 # Then, the output of the program should be:
 # [('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]
-
 # Hints:
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 # We use itemgetter to enable multiple sort keys.
@@ -690,7 +684,6 @@ print(l)
 
 # Question:
 # Define a class with a generator which can iterate the numbers, which are divisible by 7, between a given range 0 and n.
-
 # Hints:
 # Consider use yield
 
@@ -709,50 +702,45 @@ for num in number(100):
 # In[ ]:
 
 
-A robot moves in a plane starting from the original point (0,0). The robot can move toward UP, DOWN, LEFT and RIGHT with a given steps. The trace of robot movement is shown as the following:
-UP 5
-DOWN 3
-LEFT 3
-RIGHT 2
-¡­
-The numbers after the direction are steps. Please write a program to compute the distance from current position after a sequence of movement and original point. If the distance is a float, then just print the nearest integer.
-Example:
-If the following tuples are given as input to the program:
-UP 5
-DOWN 3
-LEFT 3
-RIGHT 2
-Then, the output of the program should be:
-2
+# A robot moves in a plane starting from the original point (0,0). The robot can move toward UP, DOWN, LEFT and RIGHT with a given steps. The trace of robot movement is shown as the following:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 2
+# ¡­
+# The numbers after the direction are steps. Please write a program to compute the distance from current position after a sequence of movement and original point. If the distance is a float, then just print the nearest integer.
+# Example:
+# If the following tuples are given as input to the program:
+# UP 5
+# DOWN 3
+# LEFT 3
+# RIGHT 2
+# Then, the output of the program should be:
+# 2
 
-Hints:
-In case of input data being supplied to the question, it should be assumed to be a console input.
+# Hints:
+# In case of input data being supplied to the question, it should be assumed to be a console input.
 
 
 # In[ ]:
 
 
-Question:
-
-Write a program to compute the frequency of the words from the input. The output should output after sorting the key alphanumerically.
-
-Suppose the following input is supplied to the program:
-
-New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3.
-
-Then, the output should be:
-
-2:2
-3.:1
-3?:1
-New:1
-Python:5
-Read:1
-and:1
-between:1
-choosing:1
-or:2
-to:1
+# Question:
+# Write a program to compute the frequency of the words from the input. The output should output after sorting the key alphanumerically.
+# Suppose the following input is supplied to the program:
+# New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3.
+# Then, the output should be:
+# 2:2
+# 3.:1
+# 3?:1
+# New:1
+# Python:5
+# Read:1
+# and:1
+# between:1
+# choosing:1
+# or:2
+# to:1
 
 
 # In[ ]:
@@ -781,7 +769,6 @@ for i in dict:
 
 # Question:
 #     Write a method which can calculate square value of number
-
 # Hints:
 #     Using the ** operator
 
@@ -798,7 +785,6 @@ print(n**2)
 
 # Question:
 # Define a function which can compute the sum of two numbers.
-
 # Hints:
 # Define a function with two numbers as arguments. You can compute the sum in the function and return the value.
 
@@ -815,9 +801,7 @@ print(sum(16,5))
 
 # Question:
 # Define a function that can convert a integer into a string and print it in console.
-
 # Hints:
-
 # Use str() to convert a number to string.
 
 
@@ -840,12 +824,10 @@ print(n)
 # In[ ]:
 
 
-Question:
-Define a function that can receive two integral numbers in string form and compute their sum and then print it in console.
-
-Hints:
-
-Use int() to convert a string to integer.
+# Question:
+# Define a function that can receive two integral numbers in string form and compute their sum and then print it in console.
+# Hints:
+# Use int() to convert a string to integer.
 
 
 # In[ ]:
@@ -860,9 +842,7 @@ print(sum(10,25))
 
 # Question:
 # Define a function that can accept two strings as input and concatenate them and then print it in console.
-
 # Hints:
-
 # Use + to concatenate the strings
 
 
@@ -878,9 +858,7 @@ print(sum("10","25"))
 
 # Question:
 # Define a function that can accept two strings as input and print the string with maximum length in console. If two strings have the same length, then the function should print al l strings line by line.
-
 # Hints:
-
 # Use len() function to get the length of a string
 
 
@@ -905,9 +883,7 @@ print(string_val("one","two"))
 
 # Question:
 # Define a function that can accept an integer number as input and print the "It is an even number" if the number is even, otherwise print "It is an odd number".
-
 # Hints:
-
 # Use % operator to check if a number is even or odd.
 
 
@@ -927,7 +903,6 @@ number(27)
 
 # Question:
 # Define a function which can print a dictionary where the keys are numbers between 1 and 3 (both included) and the values are square of keys.
-
 # Hints:
 # Use dict[key]=value pattern to put entry into a dictionary.
 # Use ** operator to get power of a number.
@@ -948,7 +923,6 @@ printdict()
 
 # Question:
 # Define a function which can print a dictionary where the keys are numbers between 1 and 20 (both included) and the values are square of keys.
-
 # Hints:
 # Use dict[key]=value pattern to put entry into a dictionary.
 # Use ** operator to get power of a number.
@@ -978,7 +952,6 @@ printdict()
 
 # Question:
 # Define a function which can generate and print a list where the values are square of numbers between 1 and 20 (both included).
-
 # Hints:
 # Use ** operator to get power of a number.
 # Use range() for loops.
@@ -999,7 +972,6 @@ printlist()
 
 # Question:
 # Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print the first 5 elements in the list.
-
 # Hints:
 # Use ** operator to get power of a number.
 # Use range() for loops.
@@ -1022,7 +994,6 @@ printlist()
 
 # Question:
 # Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print all values except the first 5 elements in the list.
-
 # Hints:
 # Use ** operator to get power of a number.
 # Use range() for loops.
@@ -1046,7 +1017,6 @@ printList()
 
 # Question:
 # Define a function which can generate and print a tuple where the value are square of numbers between 1 and 20 (both included). 
-
 # Hints:
 # Use ** operator to get power of a number.
 # Use range() for loops.
@@ -1068,7 +1038,6 @@ printtuple()
 
 # Question:
 # With a given tuple (1,2,3,4,5,6,7,8,9,10), write a program to print the first half values in one line and the last half values in one line. 
-
 # Hints:
 # Use [n1:n2] notation to get a slice from a tuple.
 
@@ -1103,7 +1072,6 @@ print(list2)
 
 # Question:
 # Write a program to generate and print another tuple whose values are even numbers in the given tuple (1,2,3,4,5,6,7,8,9,10). 
-
 # Hints:
 # Use "for" to iterate the tuple
 # Use tuple() to generate a tuple from a list.
@@ -1130,7 +1098,6 @@ tup1
 
 # Question:
 # Write a program which accepts a string as input to print "Yes" if the string is "yes" or "YES" or "Yes", otherwise print "No". 
-
 # Hints:
 # Use if statement to judge condition.
 
@@ -1150,9 +1117,7 @@ else:
 
 # Question:
 # Write a program which can filter even numbers in a list by using filter function. The list is: [1,2,3,4,5,6,7,8,9,10].
-
 # Hints:
-
 # Use filter() to filter some elements in a list.
 # Use lambda to define anonymous functions.
 
@@ -1178,9 +1143,7 @@ lst1
 
 # Question:
 # Write a program which can map() to make a list whose elements are square of elements in [1,2,3,4,5,6,7,8,9,10].
-
 # Hints:
-
 # Use map() to generate a list.
 # Use lambda to define anonymous functions.
 
@@ -1255,7 +1218,6 @@ print(list(lst))
 
 # Question:
 # Define a class named American which has a static method called printNationality.
-
 # Hints:
 # Use @staticmethod decorator to define class static method.
 
@@ -1265,7 +1227,6 @@ print(list(lst))
 
 # Question:
 # Define a class named American and its subclass NewYorker. 
-
 # Hints:
 # Use class Subclass(ParentClass) to define a subclass.
 
@@ -1275,7 +1236,6 @@ print(list(lst))
 
 # Question:
 # Define a class named Circle which can be constructed by a radius. The Circle class has a method which can compute the area. 
-
 # Hints:
 # Use def methodName(self) to define a method.
 
@@ -1297,7 +1257,6 @@ print(c.area)
 
 # Define a class named Rectangle which can be constructed by a length and width. The Rectangle class has a method which can 
 compute the area. 
-
 # Hints:
 # Use def methodName(self) to define a method.
 
@@ -1320,7 +1279,6 @@ print(rect.area())
 
 Define a class named Shape and its subclass Square. The Square class has an init function which takes a length as argument.
 Both classes have a area function which can print the area of the shape where Shape's area is 0 by default.
-
 Hints:
 To override a method in super class, we can define a method with the same name in the super class.
 
@@ -1341,7 +1299,7 @@ Hints:
 Use try/except to catch exceptions.
 
 
-# In[2]:
+# In[ ]:
 
 
 try:
@@ -1354,11 +1312,10 @@ except:
     print("Error converting fred to a number")
 
 
-# In[4]:
+# In[ ]:
 
 
 # Define a custom exception class which takes a string message as attribute.
-
 # Hints:To define a custom exception, we need to define a class inherited from Exception.
 
 
@@ -1368,21 +1325,24 @@ except:
 # Question:
 
 # Assuming that we have some email addresses in the "username@companyname.com" format, please write program to print the user name of a given email address. Both user names and company names are composed of letters only.
-
 # Example:
 # If the following email address is given as input to the program:
-
 # john@google.com
-
 # Then, the output of the program should be:
-
 # john
-
 # In case of input data being supplied to the question, it should be assumed to be a console input.
-
 # Hints:
-
 # Use \w to match letters.
+
+
+# In[ ]:
+
+
+import re
+emailaddress = input()
+pattern = "(\w+)@(\w+)\.(com)"
+reg = re.match(pattern,emailaddress)
+print(reg.group(1))
 
 
 # In[ ]:
@@ -1391,21 +1351,24 @@ except:
 # Question:
 
 # Assuming that we have some email addresses in the "username@companyname.com" format, please write program to print the company name of a given email address. Both user names and company names are composed of letters only.
-
 # Example:
 # If the following email address is given as input to the program:
-
 # john@google.com
-
 # Then, the output of the program should be:
-
 # google
-
 # In case of input data being supplied to the question, it should be assumed to be a console input.
-
 # Hints:
-
 # Use \w to match letters.
+
+
+# In[ ]:
+
+
+import re
+emailaddress = input()
+pattern = "(\w+)@(\w+)\.(com)"
+reg = re.match(pattern,emailaddress)
+print(reg.group(1))
 
 
 # In[ ]:
@@ -1414,27 +1377,159 @@ except:
 # Question:
 
 # Write a program which accepts a sequence of words separated by whitespace as input to print the words composed of digits only.
-
 # Example:
 # If the following words is given as input to the program:
-
 # 2 cats and 3 dogs.
-
 # Then, the output of the program should be:
-
 # ['2', '3']
-
 # In case of input data being supplied to the question, it should be assumed to be a console input.
-
 # Hints:
-
 # Use re.findall() to find all substring using regex.
 
 
-# In[8]:
+# In[ ]:
 
 
 import re
 str = input()
 print(re.findall("\d+",str))
+
+
+# In[ ]:
+
+
+Question:
+
+Write a program to compute 1/2+2/3+3/4+...+n/n+1 with a given n input by console (n>0).
+
+Example:
+If the following n is given as input to the program:
+5
+Then, the output of the program should be:
+3.55
+In case of input data being supplied to the question, it should be assumed to be a console input.
+Hints:
+Use float() to convert an integer to a float.
+
+
+# In[ ]:
+
+
+n=int(input("Enter the number of terms: "))
+val=0
+for i in range(1,n+1):
+    val = val + float(float(i)/(i+1))
+print(round(val,2))
+
+
+# In[ ]:
+
+
+# Question:
+
+# Write a program to compute:
+# f(n)=f(n-1)+100 when n>0
+# and f(0)=1
+# with a given n input by console (n>0).
+# Example:
+# If the following n is given as input to the program:
+# 5
+# Then, the output of the program should be:
+# 500
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+# Hints:
+# We can define recursive function in Python.
+
+
+# In[ ]:
+
+
+def num(n):
+    if n == 0:
+        return 0
+    else:
+        return num(n-1)+100
+print(num)
+
+n = input()
+print(num(5))
+
+
+# In[ ]:
+
+
+x = int(input(lambda x:0 if (x==0) else ((x-1)+100), x)
+
+
+# In[ ]:
+
+
+# Question:
+
+# The Fibonacci Sequence is computed based on the following formula:
+
+# f(n)=0 if n=0
+# f(n)=1 if n=1
+# f(n)=f(n-1)+f(n-2) if n>1
+
+# Please write a program to compute the value of f(n) with a given n input by console.
+# Example:
+# If the following n is given as input to the program:
+# 7
+# Then, the output of the program should be:
+# 13
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+# Hints:
+# We can define recursive function in Python.
+
+
+# In[2]:
+
+
+def num(n):
+    if n == 0: 
+        return 0
+    elif n == 1: 
+        return 1
+    else: return (n-1)+(n-2)
+
+x=int(input())
+print(num(x))
+
+
+# In[11]:
+
+
+# Question:
+# The Fibonacci Sequence is computed based on the following formula:
+# f(n)=0 if n=0
+# f(n)=1 if n=1
+# f(n)=f(n-1)+f(n-2) if n>1
+# Please write a program using list comprehension to print the Fibonacci Sequence in comma separated form with a given n input by console.
+# Example:
+# If the following n is given as input to the program:
+# 7
+# Then, the output of the program should be:
+# 0,1,1,2,3,5,8,13
+# Hints:
+# We can define recursive function in Python.
+# Use list comprehension to generate a list from an existing list.
+# Use string.join() to join a list of strings.
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[32]:
+
+
+def f(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return f(n-1)+f(n-2)
+
+n=int(input())
+output = [str(f(x)) for x in range(0, n+1)]
+print(",".join(output))
 
