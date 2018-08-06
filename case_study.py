@@ -1483,7 +1483,7 @@ x = int(input(lambda x:0 if (x==0) else ((x-1)+100), x)
 # We can define recursive function in Python.
 
 
-# In[2]:
+# In[ ]:
 
 
 def num(n):
@@ -1497,7 +1497,7 @@ x=int(input())
 print(num(x))
 
 
-# In[11]:
+# In[ ]:
 
 
 # Question:
@@ -1518,7 +1518,7 @@ print(num(x))
 # In case of input data being supplied to the question, it should be assumed to be a console input.
 
 
-# In[32]:
+# In[ ]:
 
 
 def f(n):
@@ -1532,4 +1532,309 @@ def f(n):
 n=int(input())
 output = [str(f(x)) for x in range(0, n+1)]
 print(",".join(output))
+
+
+# In[ ]:
+
+
+# function questionaires only
+
+# Question:
+# Write a Python function to find the Max of three numbers.
+
+
+# In[ ]:
+
+
+# other solution(by using *args)
+
+print(max(*[10,11,12]))
+
+print(max(*[-1,-2,-3]))
+
+print(max(*[1,3,0]))
+
+print(max(*[8,-7,3]))
+
+
+# In[ ]:
+
+
+# Function 
+
+def max_two(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+    
+def max_three(a, b, c):
+    return max_two(a, max_two(b,c))
+
+print(max_three(1, 8, -3))
+
+max_three(11,9,8)
+
+
+# In[ ]:
+
+
+# Question:
+# Write a Python function to sum all the numbers in a list.Sample List : (1,9,2,7,5,3,-13,11)Expected Output : 25 
+
+
+# In[17]:
+
+
+def sum_total(numbers):
+    total= 0
+    for x in numbers:
+        total+=x
+    return total
+print(sum_total((1,9,2,7,5,3,-13,11)))
+
+
+# In[ ]:
+
+
+# by importing math pkg
+
+import math
+test = (1,9,2,7,5,3,-13,11)
+print(sum([test[i-1] for i in range(len(test))]))
+
+
+# In[ ]:
+
+
+# the simplest way
+
+List = [1,9,2,7,5,3,-13,11]
+sum = sum(List)
+print(sum)
+
+
+# In[ ]:
+
+
+# Question:
+# Write a Python function to multiply all the numbers in a list. Go to the editor
+# Sample List : (8, 2, 3, -1, 7)
+# Expected Output : -336 
+
+
+# In[ ]:
+
+
+def multiply(numbers):
+    total = 1
+    for x in numbers:
+        total*=x
+    return total
+print(multiply( (8, 2, 3, -1, 7)))
+
+
+# In[ ]:
+
+
+# by using numpy
+
+import numpy as np
+
+list = [8, 2, 3, -1, 7]
+result = np.prod(list)
+print(result)
+
+
+# In[ ]:
+
+
+# Question:
+# Write a Python program to reverse a string.
+
+
+# In[ ]:
+
+
+def string_reverse(s):
+    
+    str = ''
+    for i in s:
+        str = i + str
+    return str
+    
+s = "ABkjBcCXxFuIlMhJ"
+print(s)
+
+string_reverse(s)
+
+
+# In[ ]:
+
+
+string_reverse("give me some sunshine")
+
+
+# In[ ]:
+
+
+# from collection module
+
+from collections import deque
+
+def reverse(iterable):
+    d = deque()
+    d.extendleft(iterable)
+    return ''.join(d)
+reverse("give me some sunshine")
+
+
+# In[ ]:
+
+
+# defining function
+
+def reverse_string(text):
+    list = []
+    count = 1
+    for i in range(0,len(text)):
+        list.append(text[len(text)-count])
+        count+=1
+    list = ''.join(list)
+    return list
+reverse_string("give me some sunshine")
+
+
+# In[ ]:
+
+
+# Question:
+    
+# Write a Python function that takes a number as a parameter and check the number is prime or not. Go to the editor
+# Note : A prime number (or a prime) is a natural number greater than 1 and that has no positive divisors other than 1 and itself. 
+
+
+# In[6]:
+
+
+def is_prime(x):
+    if x > 1:
+        n = x // 2
+        for i in range(2, n + 1):
+            if x % i == 0:
+                return False
+        else:
+            return True
+    else:
+        return False
+is_prime(36)
+
+
+# In[7]:
+
+
+is_prime(37)
+
+
+# In[ ]:
+
+
+n=int(input("Enter the number:: "))
+
+for i in range(2,n):
+    p=i
+    k=0
+    for j in range(2,p-1):
+        if(p%j==0):
+            k=k+1
+    if(k==0):
+        print(p)
+
+
+# In[ ]:
+
+
+def prime(n):
+    count = 0
+    for i in range(1,(n+1)):
+        if n % i ==0:
+            count+=1
+    if count > 2:
+        print("not a prime number")
+    else:
+        print("A prime number")
+
+
+# In[ ]:
+
+
+prime(21)
+
+
+# In[ ]:
+
+
+# Write a Python function to check whether a number is perfect or not. Go to the editor
+# According to Wikipedia : In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive
+# divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, 
+# a perfect number is a number that is half the sum of all of its positive divisors (including itself).
+# Example : The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently,
+# the number 6 is equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number
+# is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128. 
+
+
+# In[11]:
+
+
+number = int(input(" Please Enter number: "))
+i = 1
+sum = 0
+while(i < number):
+    if number % i == 0 :
+        sum = sum + i
+    i = i + 1
+if sum == number:
+    print(" %d is a Perfect Number" %number)
+else:
+    print(" %d is not the Perfect Number" %number)
+
+
+# In[12]:
+
+
+# Explanation of the above example:
+    
+# First Iteration
+# For the first Iteration, Number = 6, Sum = 0 and i = 1
+# If (Number % i == 0)
+# 6 % 1 == 0
+# If statement is succeeded here So,
+# Sum = Sum + i
+# Sum = 0 +1 = 1
+
+# Second Iteration
+# For the second Iteration the values of both Sum and i has been changed as:
+# Sum = 1 and i = 2
+# If (Number % i == 0)
+# 6 % 2 == 0
+# If statement is succeeded here So,
+# Sum = Sum + i
+# Sum = 1 + 2 = 3
+
+# Third Iteration
+# For the third Iteration the values of both Sum and i has been changed as:
+# Sum = 3 and i = 3
+# If (Number % i == 0)
+# 6 % 3 == 0
+# If statement is succeeded here So,
+# Sum = Sum + i
+# Sum = 3 + 3 = 6
+
+# For the fourth and fifth iterations condition inside the if condition will fail
+# 6 % 4 == 0 (FALSE)
+# 6 % 5 == 0 (FALSE)
+# So, compiler will terminate the for loop.
+
+# In the next line we have If statement to check whether the value inside the Sum variable is exactly equal to given Number or Not.
+# If the condition (Sum == Number) is TRUE then below print statement will be executed
 
