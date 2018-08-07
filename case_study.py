@@ -127,9 +127,11 @@ print(multi_list)
 # In[ ]:
 
 
-d = dict()
-for i in range(1,i):
-    d[i] = i**2
+n=int(input())
+d=dict()
+for i in range(1,n+1):
+    d[i]=i*i
+
 print(d)
 
 
@@ -1583,7 +1585,7 @@ max_three(11,9,8)
 # Write a Python function to sum all the numbers in a list.Sample List : (1,9,2,7,5,3,-13,11)Expected Output : 25 
 
 
-# In[17]:
+# In[ ]:
 
 
 def sum_total(numbers):
@@ -1714,7 +1716,7 @@ reverse_string("give me some sunshine")
 # Note : A prime number (or a prime) is a natural number greater than 1 and that has no positive divisors other than 1 and itself. 
 
 
-# In[6]:
+# In[ ]:
 
 
 def is_prime(x):
@@ -1730,7 +1732,7 @@ def is_prime(x):
 is_prime(36)
 
 
-# In[7]:
+# In[ ]:
 
 
 is_prime(37)
@@ -1783,7 +1785,7 @@ prime(21)
 # is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128. 
 
 
-# In[11]:
+# In[ ]:
 
 
 number = int(input(" Please Enter number: "))
@@ -1799,7 +1801,7 @@ else:
     print(" %d is not the Perfect Number" %number)
 
 
-# In[12]:
+# In[ ]:
 
 
 # Explanation of the above example:
@@ -1837,4 +1839,314 @@ else:
 
 # In the next line we have If statement to check whether the value inside the Sum variable is exactly equal to given Number or Not.
 # If the condition (Sum == Number) is TRUE then below print statement will be executed
+
+
+# In[ ]:
+
+
+# Question:
+# Write a Python program to execute a string containing Python code.
+
+
+# In[ ]:
+
+
+str1 = 'print("hello world")'
+str2 = """
+def multiply(a,b):
+    return a*b
+print("Result :",multiply(2,3))
+"""
+exec(str1)
+exec(str2)
+
+
+# In[ ]:
+
+
+# Question:
+
+# Please write a program using generator to print the numbers which can be divisible by 5 and 7 between 0 and n in comma separated form while n is input by console.
+
+# Example:
+# If the following n is given as input to the program:
+
+# 100
+
+# Then, the output of the program should be:
+
+# 0,35,70
+
+# Hints:
+# Use yield to produce the next value in generator.
+
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[14]:
+
+
+def NumGen(n):
+    for i in range(0,100):
+        if i%5 == 0 and i%7 == 0:
+            yield i
+n = int(input())
+values = []
+for i in NumGen(n):
+    values.append(str(i))
+print(','.join(values))
+
+
+# In[18]:
+
+
+# Create a generator for squares of numbers up to some number N.
+
+
+# In[25]:
+
+
+def NumGen(n):
+    for i in range(1,n):
+        yield i**2
+        
+n = int(input())
+list = []
+for i in NumGen(n):
+    list.append(str(i))
+print(','.join(values))
+
+
+# In[20]:
+
+
+# Question:
+# Please write a program using generator to print the even numbers between 0 and n in comma separated form while n is input by console.
+# Example:
+# If the following n is given as input to the program:
+# 10
+# Then, the output of the program should be:
+# 0,2,4,6,8,10
+# Hints:
+# Use yield to produce the next value in generator.
+# In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+# In[24]:
+
+
+def NumGen(n):
+    for i in range(1,n):
+        if i%2 == 0:
+            yield(i)
+            
+# now we will check the dfined function with inpuut.
+
+n = int(input())
+values = []
+for i in NumGen(n):
+    values.append(str(i))
+print(','.join(values))
+
+
+# In[ ]:
+
+
+# Question: "Assertion Function"
+
+# Please write assert statements to verify that every number in the list [2,4,6,8] is even.
+# Hints:
+# Use "assert expression" to make assertion.
+
+
+# In[30]:
+
+
+list = [2,4,6,8]
+for i in list:
+    assert i%2==0
+
+
+# In[ ]:
+
+
+# More example in Python "Assertion Function".Let's see another example.
+
+# Suppose we are building an online store with Python. we’re working to add a discount coupon functionality to the system and 
+# eventually write the following  apply_discount function:
+
+
+# In[45]:
+
+
+def product_discount(item,discount):
+    price = int(item['price'] * (1.0 -discount))
+    assert 0<= price <= item['price']
+    return price
+shoes = {'name' : 'shoes', 'price':14000}
+
+product_discount(shoes, 0.25) 
+
+
+# In[46]:
+
+
+# it will through an error as the condition is jot satisfied as defined in the above function.
+
+# apply_discount(shoes, 2.0)
+
+
+# In[ ]:
+
+
+# Question:
+
+# Please generate a random float where the value is between 10 and 100 using Python math module.
+# Hints:
+# Use random.random() to generate a random float in [0,1].
+
+
+# In[63]:
+
+
+import random
+print(random.random()*10)
+# we can take the number as per the requirement like float[1,100]
+
+
+# In[73]:
+
+
+# here from random.uniform also i can get the random number.Below 2 methods are described.
+
+import random
+random.uniform(0, 1)
+
+
+# In[78]:
+
+
+# to generate a random float in [0,1].we can apply the range as per the prob. statement.
+import random
+random.random()*1
+
+
+# In[84]:
+
+
+import random
+random.random()*100-5
+
+
+# In[ ]:
+
+
+# Question:
+
+# Please write a program to output a random even number between 0 and 10 inclusive using random module and list comprehension.
+# Hints:
+# Use random.choice() to a random element from a list.
+
+
+# In[96]:
+
+
+import random
+print(random.choice([i for i in range(0,11) if i%2 == 0]))
+
+
+# In[ ]:
+
+
+# Question:
+# Create a builtin function where different object class shares the same method.(Polymorphism)
+
+
+# In[ ]:
+
+
+# we will see a simple method used in  a case study for What’s another way to differentiate one dog from another?
+# How about the dog’s breed:
+
+
+# In[8]:
+
+
+class Dog:
+    def __init__(self, breed):
+        self.breed = breed
+        
+spencer = Dog("German Shepard")
+spencer.breed
+
+sara = Dog("Boston Terrier")
+sara.breed
+
+
+# In[1]:
+
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        return self.name+' says Woof!'
+    
+class Cat:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        return self.name+' says Meow!' 
+    
+Doggy = Dog('Doggy')
+Kitty = Cat('Kitty')
+print(Doggy.speak())
+print(Kitty.speak())
+
+
+# In[2]:
+
+
+#  loop representation
+for pet in [Doggy,Kitty]:
+    print(pet.speak())
+
+
+# In[3]:
+
+
+# we can also define a function to get the values 
+
+def pet_speak(pet):
+    print(pet.speak())
+pet_speak(Doggy)
+pet_speak(Kitty)  
+
+
+# In[ ]:
+
+
+# Question:(Method)
+# Now we will check the case study of a book,author name and pages defined under a method "Book".
+
+
+# In[7]:
+
+
+class Book:
+    def __init__(self, title, author, pages):
+        print("Book Created")
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def __str__(self):
+        return "Title: %s, author: %s, pages: %s" %(self.title, self.author, self.pages)
+    def __len__(self):
+        return self.pages
+    def __del__(self):
+        print("Book Deleted") 
+
+# now we will check the function working working under the class Book
+book = Book("The Case that Shook India" , "Prashant Bhushan", 120)
 
